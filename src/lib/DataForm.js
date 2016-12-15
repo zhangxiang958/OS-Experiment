@@ -1,19 +1,19 @@
 webpackJsonp([2,8],{
 
-/***/ 50:
+/***/ 51:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(51)
+	__webpack_require__(52)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(53)
+	__vue_exports__ = __webpack_require__(54)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(54)
+	var __vue_template__ = __webpack_require__(55)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -25,7 +25,7 @@ webpackJsonp([2,8],{
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "/home/jarvis/Workspace/knowledgeSystem/app/src/views/addDataFrom/addData.vue"
+	__vue_options__.__file = "/home/jarvis/Workspace/OS/src/views/addDataFrom/addData.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 
@@ -36,9 +36,9 @@ webpackJsonp([2,8],{
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-03664300", __vue_options__)
+	    hotAPI.createRecord("data-v-fe724782", __vue_options__)
 	  } else {
-	    hotAPI.reload("data-v-03664300", __vue_options__)
+	    hotAPI.reload("data-v-fe724782", __vue_options__)
 	  }
 	})()}
 	if (__vue_options__.functional) {console.error("[vue-loader] addData.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -48,23 +48,23 @@ webpackJsonp([2,8],{
 
 /***/ },
 
-/***/ 51:
+/***/ 52:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(52);
+	var content = __webpack_require__(53);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(32)(content, {});
+	var update = __webpack_require__(33)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-03664300!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addData.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-03664300!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addData.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-fe724782!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addData.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-fe724782!./../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addData.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -75,10 +75,10 @@ webpackJsonp([2,8],{
 
 /***/ },
 
-/***/ 52:
+/***/ 53:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(31)();
+	exports = module.exports = __webpack_require__(32)();
 	// imports
 
 
@@ -90,7 +90,7 @@ webpackJsonp([2,8],{
 
 /***/ },
 
-/***/ 53:
+/***/ 54:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -317,70 +317,70 @@ webpackJsonp([2,8],{
 
 /***/ },
 
-/***/ 54:
+/***/ 55:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;
-	  return _vm._h('div', {
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _c('div', {
 	    attrs: {
 	      "id": "content"
 	    }
-	  }, [_vm._h('div', {
+	  }, [_c('div', {
 	    staticClass: "panel panel-default"
-	  }, [_vm._h('div', {
+	  }, [_c('div', {
 	    staticClass: "panel-heading"
-	  }, [_vm._h('i', {
+	  }, [_c('i', {
 	    staticClass: "icon-edit icon-large"
-	  }), "\n            Form Default\n          "]), " ", _vm._h('div', {
+	  }), _vm._v("\n            Form Default\n          ")]), _vm._v(" "), _c('div', {
 	    staticClass: "panel-body"
-	  }, [_vm._h('form', [_vm._h('fieldset', [_vm._h('legend', ["Default Inputs"]), " ", _vm._h('div', {
+	  }, [_c('form', [_c('fieldset', [_c('legend', [_vm._v("Default Inputs")]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Text field"]), " ", _vm._h('input', {
+	  }, [_vm._v("Text field")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": "Enter username",
 	      "type": "text"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Password field"]), " ", _vm._h('input', {
+	  }, [_vm._v("Password field")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": "Enter password",
 	      "type": "password"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Input field with help"]), " ", _vm._h('input', {
+	  }, [_vm._v("Input field with help")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".help-block"
 	    }
-	  }), " ", _vm._h('p', {
+	  }), _vm._v(" "), _c('p', {
 	    staticClass: "help-block"
-	  }, ["Example block-level help text here."])]), " ", _vm._h('div', {
+	  }, [_vm._v("Example block-level help text here.")])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Disabled field"]), " ", _vm._h('input', {
+	  }, [_vm._v("Disabled field")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "disabled": "",
 	      "placeholder": "This is field is disabled!"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Tooltip field"]), " ", _vm._h('input', {
+	  }, [_vm._v("Tooltip field")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "data-toggle": "tooltip",
@@ -388,293 +388,294 @@ webpackJsonp([2,8],{
 	      "title": "",
 	      "data-original-title": "Input tips here"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Textarea field"]), " ", _vm._h('textarea', {
+	  }, [_vm._v("Textarea field")]), _vm._v(" "), _c('textarea', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "rows": "4"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["File input"]), " ", _vm._h('input', {
+	  }, [_vm._v("File input")]), _vm._v(" "), _c('input', {
 	    attrs: {
 	      "type": "file"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Large field"]), " ", _vm._h('input', {
+	  }, [_vm._v("Large field")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control input-lg",
 	    attrs: {
 	      "placeholder": ".input-lg",
 	      "type": "text"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Small field"]), " ", _vm._h('input', {
+	  }, [_vm._v("Small field")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control input-sm",
 	    attrs: {
 	      "placeholder": ".input-sm",
 	      "type": "text"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group row"
-	  }, [_vm._h('div', {
+	  }, [_c('div', {
 	    staticClass: "col-lg-2"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Column sizing"]), " ", _vm._h('input', {
+	  }, [_vm._v("Column sizing")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".col-lg-2",
 	      "type": "text"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-3"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Column sizing"]), " ", _vm._h('input', {
+	  }, [_vm._v("Column sizing")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".col-lg-3",
 	      "type": "text"
 	    }
-	  })]), " ", _vm._h('div', {
+	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-7"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Column sizing"]), " ", _vm._h('input', {
+	  }, [_vm._v("Column sizing")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".col-lg-7",
 	      "type": "text"
 	    }
-	  })])])]), " ", _vm._h('fieldset', [_vm._h('legend', ["Input Validation States"]), " ", _vm._h('div', {
+	  })])])]), _vm._v(" "), _c('fieldset', [_c('legend', [_vm._v("Input Validation States")]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group has-warning"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Input field with help"]), " ", _vm._h('input', {
+	  }, [_vm._v("Input field with help")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".has-warning"
 	    }
-	  }), " ", _vm._h('p', {
+	  }), _vm._v(" "), _c('p', {
 	    staticClass: "help-block"
-	  }, ["Example block-level help text here."])]), " ", _vm._h('div', {
+	  }, [_vm._v("Example block-level help text here.")])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group has-error"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Input field with help"]), " ", _vm._h('input', {
+	  }, [_vm._v("Input field with help")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".has-error"
 	    }
-	  }), " ", _vm._h('p', {
+	  }), _vm._v(" "), _c('p', {
 	    staticClass: "help-block"
-	  }, ["Example block-level help text here."])]), " ", _vm._h('div', {
+	  }, [_vm._v("Example block-level help text here.")])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group has-success"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Input field with help"]), " ", _vm._h('input', {
+	  }, [_vm._v("Input field with help")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".has-success"
 	    }
-	  }), " ", _vm._h('p', {
+	  }), _vm._v(" "), _c('p', {
 	    staticClass: "help-block"
-	  }, ["Example block-level help text here."])])]), " ", _vm._h('fieldset', [_vm._h('legend', ["Checkboxes and radios"]), " ", _vm._h('div', {
+	  }, [_vm._v("Example block-level help text here.")])])]), _vm._v(" "), _c('fieldset', [_c('legend', [_vm._v("Checkboxes and radios")]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Checkbox"]), " ", _vm._h('div', {
+	  }, [_vm._v("Checkbox")]), _vm._v(" "), _c('div', {
 	    staticClass: "checkbox"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    attrs: {
 	      "type": "checkbox",
 	      "value": ""
 	    }
-	  }), "\n                    Option one is this and that—be sure to include why it's great\n                  "])]), " ", _vm._h('div', {
+	  }), _vm._v("\n                    Option one is this and that—be sure to include why it's great\n                  ")])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Inline checkbox"]), " ", _vm._h('br'), " ", _vm._h('div', {
+	  }, [_vm._v("Inline checkbox")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
 	    staticClass: "checkbox-inline"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    attrs: {
 	      "type": "checkbox",
 	      "value": ""
 	    }
-	  }), "\n                    1\n                  "]), " ", _vm._h('div', {
+	  }), _vm._v("\n                    1\n                  ")]), _vm._v(" "), _c('div', {
 	    staticClass: "checkbox-inline"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    attrs: {
 	      "type": "checkbox",
 	      "value": ""
 	    }
-	  }), "\n                    2\n                  "]), " ", _vm._h('div', {
+	  }), _vm._v("\n                    2\n                  ")]), _vm._v(" "), _c('div', {
 	    staticClass: "checkbox-inline"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    attrs: {
 	      "type": "checkbox",
 	      "value": ""
 	    }
-	  }), "\n                    3\n                  "])]), " ", _vm._h('div', {
+	  }), _vm._v("\n                    3\n                  ")])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Radio"]), " ", _vm._h('div', {
+	  }, [_vm._v("Radio")]), _vm._v(" "), _c('div', {
 	    staticClass: "radio"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    attrs: {
 	      "checked": "",
 	      "name": "options_radio",
 	      "type": "radio",
 	      "value": "option1"
 	    }
-	  }), "\n                    Option one is this and that—be sure to include why it's great\n                    ", _vm._h('br'), " ", _vm._h('input', {
+	  }), _vm._v("\n                    Option one is this and that—be sure to include why it's great\n                    "), _c('br'), _vm._v(" "), _c('input', {
 	    attrs: {
 	      "checked": "",
 	      "name": "options_radio",
 	      "type": "radio",
 	      "value": "option2"
 	    }
-	  }), "\n                    Option two can be something else and selecting it will deselect option one\n                  "])])]), " ", _vm._h('fieldset', [_vm._h('legend', ["Selects"]), " ", _vm._h('div', {
+	  }), _vm._v("\n                    Option two can be something else and selecting it will deselect option one\n                  ")])])]), _vm._v(" "), _c('fieldset', [_c('legend', [_vm._v("Selects")]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Single select"]), " ", _vm._h('select', {
+	  }, [_vm._v("Single select")]), _vm._v(" "), _c('select', {
 	    staticClass: "form-control"
-	  }, [_vm._h('option', ["1"]), " ", _vm._h('option', ["2"]), " ", _vm._h('option', ["3"]), " ", _vm._h('option', ["4"]), " ", _vm._h('option', ["5"])])]), " ", _vm._h('div', {
+	  }, [_c('option', [_vm._v("1")]), _vm._v(" "), _c('option', [_vm._v("2")]), _vm._v(" "), _c('option', [_vm._v("3")]), _vm._v(" "), _c('option', [_vm._v("4")]), _vm._v(" "), _c('option', [_vm._v("5")])])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "control-label"
-	  }, ["Multiple select"]), " ", _vm._h('select', {
+	  }, [_vm._v("Multiple select")]), _vm._v(" "), _c('select', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "multiple": ""
 	    }
-	  }, [_vm._h('option', ["1"]), " ", _vm._h('option', ["2"]), " ", _vm._h('option', ["3"]), " ", _vm._h('option', ["4"]), " ", _vm._h('option', ["5"])])])]), " ", _vm._h('div', {
+	  }, [_c('option', [_vm._v("1")]), _vm._v(" "), _c('option', [_vm._v("2")]), _vm._v(" "), _c('option', [_vm._v("3")]), _vm._v(" "), _c('option', [_vm._v("4")]), _vm._v(" "), _c('option', [_vm._v("5")])])])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-actions"
-	  }, [_vm._h('button', {
+	  }, [_c('button', {
 	    staticClass: "btn btn-default",
 	    attrs: {
 	      "type": "submit"
 	    }
-	  }, ["Submit"]), " ", _vm._h('a', {
+	  }, [_vm._v("Submit")]), _vm._v(" "), _c('a', {
 	    staticClass: "btn",
 	    attrs: {
 	      "href": "#"
 	    }
-	  }, ["Cancel"])])])])]), " ", _vm._h('div', {
+	  }, [_vm._v("Cancel")])])])])]), _vm._v(" "), _c('div', {
 	    staticClass: "panel panel-default"
-	  }, [_vm._h('div', {
+	  }, [_c('div', {
 	    staticClass: "panel-heading"
-	  }, [_vm._h('i', {
+	  }, [_c('i', {
 	    staticClass: "icon-edit icon-large"
-	  }), "\n            Form Horizontal\n          "]), " ", _vm._h('div', {
+	  }), _vm._v("\n            Form Horizontal\n          ")]), _vm._v(" "), _c('div', {
 	    staticClass: "panel-body"
-	  }, [_vm._h('form', {
+	  }, [_c('form', {
 	    staticClass: "form-horizontal"
-	  }, [_vm._h('fieldset', [_vm._h('legend', ["Default inputs"]), " ", _vm._h('div', {
+	  }, [_c('fieldset', [_c('legend', [_vm._v("Default inputs")]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "col-lg-2 control-label"
-	  }, ["Text field"]), " ", _vm._h('div', {
+	  }, [_vm._v("Text field")]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-10"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": "Enter username",
 	      "type": "text"
 	    }
-	  })])]), " ", _vm._h('div', {
+	  })])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "col-lg-2 control-label"
-	  }, ["Password field"]), " ", _vm._h('div', {
+	  }, [_vm._v("Password field")]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-10"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": "Enter password",
 	      "type": "password"
 	    }
-	  })])]), " ", _vm._h('div', {
+	  })])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "col-lg-2 control-label"
-	  }, ["Input field with help"]), " ", _vm._h('div', {
+	  }, [_vm._v("Input field with help")]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-10"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".help-block"
 	    }
-	  }), " ", _vm._h('p', {
+	  }), _vm._v(" "), _c('p', {
 	    staticClass: "help-block"
-	  }, ["Example block-level help text here.%fieldset"])])]), " ", _vm._h('legend', ["Validation inputs"]), " ", _vm._h('div', {
+	  }, [_vm._v("Example block-level help text here.%fieldset")])])]), _vm._v(" "), _c('legend', [_vm._v("Validation inputs")]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group has-warning"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "col-lg-2 control-label"
-	  }, ["Text field"]), " ", _vm._h('div', {
+	  }, [_vm._v("Text field")]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-10"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": "Enter username",
 	      "type": "text"
 	    }
-	  })])]), " ", _vm._h('div', {
+	  })])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group has-error"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "col-lg-2 control-label"
-	  }, ["Password field"]), " ", _vm._h('div', {
+	  }, [_vm._v("Password field")]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-10"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": "Enter password",
 	      "type": "password"
 	    }
-	  })])]), " ", _vm._h('div', {
+	  })])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-group has-success"
-	  }, [_vm._h('label', {
+	  }, [_c('label', {
 	    staticClass: "col-lg-2 control-label"
-	  }, ["Input field with help"]), " ", _vm._h('div', {
+	  }, [_vm._v("Input field with help")]), _vm._v(" "), _c('div', {
 	    staticClass: "col-lg-10"
-	  }, [_vm._h('input', {
+	  }, [_c('input', {
 	    staticClass: "form-control",
 	    attrs: {
 	      "placeholder": ".help-block"
 	    }
-	  }), " ", _vm._h('p', {
+	  }), _vm._v(" "), _c('p', {
 	    staticClass: "help-block"
-	  }, ["Example block-level help text here."])])])]), " ", _vm._h('div', {
+	  }, [_vm._v("Example block-level help text here.")])])])]), _vm._v(" "), _c('div', {
 	    staticClass: "form-actions"
-	  }, [_vm._h('button', {
+	  }, [_c('button', {
 	    staticClass: "btn btn-default",
 	    attrs: {
 	      "type": "submit"
 	    }
-	  }, ["Save"]), " ", _vm._h('a', {
+	  }, [_vm._v("Save")]), _vm._v(" "), _c('a', {
 	    staticClass: "btn",
 	    attrs: {
 	      "href": "#"
 	    }
-	  }, ["Cancel"])])])])])])
+	  }, [_vm._v("Cancel")])])])])])])
 	}]}
+	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-03664300", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-fe724782", module.exports)
 	  }
 	}
 

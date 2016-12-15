@@ -6,22 +6,13 @@
 
 <template>
 	<div>
-<!-- 		{{message}}
-		{{count}} -->
-		<!-- <mdl-button @click.native="testMdl">asdjakl</mdl-button> -->
-		
 		<div id="wrapper">
-      	<!-- Sidebar -->
-			<Sidebar />
 			<router-view></router-view>
     	</div>
 	</div>
 </template>
 
 <script>
-	import Sidebar  	from '../components/sidebar.vue';
-	import DataTable	from '../components/table.vue';
-
 	export default {
 		created() {
 			// console.log("created");
@@ -42,15 +33,10 @@
 			}
 		},
 		methods: {
-
-			testMdl() {
-				alert("mdl");
-				console.log(this.$store);
-				this.$store.commit('increment');
-			}
+			
 		},
 		components: {
-			Sidebar, DataTable
+			
 		}
 	}
 </script>
