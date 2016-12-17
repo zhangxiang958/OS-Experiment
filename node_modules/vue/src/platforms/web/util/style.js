@@ -4,8 +4,10 @@ import { cached, extend, toObject } from 'shared/util'
 
 export const parseStyleText = cached(function (cssText) {
   const res = {}
-  const listDelimiter = /;(?![^(]*\))/g
-  const propertyDelimiter = /:(.+)/
+  const hasBackground = cssText.indexOf('background') >= 0
+  // maybe with background-image: url(http://xxx) or base64 img
+  const listDelimiter = hasBackground ? /;(?![^(]*\))/g : ';'
+  const propertyDelimiter = hasBackground ? /:(.+)/ : ':'
   cssText.split(listDelimiter).forEach(function (item) {
     if (item) {
       var tmp = item.split(propertyDelimiter)

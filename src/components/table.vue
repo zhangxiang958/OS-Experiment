@@ -1,143 +1,158 @@
 <style>
-	table {
-		table-layout: fixed;
-		word-break: break-all; 
-		word-wrap: break-word;
-	}
-	td {
-    	overflow: hidden;
-    	white-space: nowrap;
-    	text-overflow:ellipsis;
-		-o-text-overflow:ellipsis;
-		-moz-text-overflow: ellipsis;
-		-webkit-text-overflow: ellipsis;
-	}
-  .icon-add:before {
-    content: "\f0f6";
-  }
+    
+	.el-table {
+        position: relative;
+        border-right: 0;
+        border-bottom: 0;
+        width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        background-color: #fff;
+        border: 1px solid #e0e6ed;
+        font-size: 14px;
+        color: #1f2d3d;
+    }
+    .el-table:before {
+        content: '';
+        position: absolute;
+        background-color: #e0e6ed;
+        z-index: 1;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+    }
+    .el-table .hidden-columns {
+        visibility: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    .el-table__header-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+    .el-table__header, .el-table__body {
+        table-layout: fixed;
+        width: 100%;
+    }
+    .el-table th {
+        position: relative;
+        box-sizing: border-box;
+        min-width: 0;
+        height: 40px;
+        border-right: 1px solid #e0e6ed;
+        background-color: #eff2f7;
+        text-align: left;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .el-table td {
+        position: relative;
+        box-sizing: border-box;
+        height: 40px;
+        min-width: 0;
+        border-bottom: 1px solid #e0e6ed;
+        border-right: 1px solid #e0e6ed;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+    .el-table th.isleaf {
+        border-bottom: 1px solid #e0e6ed;
+    }
+    .el-table .cell {
+        box-sizing: border-box;
+        padding-left: 18px;
+        padding-right: 18px;
+        line-height: 24px;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-break: break-all;
+        overflow: hidden;
+    }
+    .el-table th > .cell {
+        position: relative;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 100%;
+        line-height: 20px;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+        word-wrap: normal;
+    }
+    .el-table__body-wrapper {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: auto;
+    }
 </style>
 
 <template>
-	<div id="content">
-    <div class="panel panel-default grid">
-      <div class="panel-heading">
-        <i class="icon-table icon-large"></i>
-        {{ tableName }}
-        <div class="panel-tools">
-          <div class="btn-group">
-            <a class="btn" @click="addItem">
-              <i class="icon-wrench icon-add"></i>
-              添加数据
-            </a>
-            <a class="btn">
-              <i class="icon-wrench"></i>
-              Settings
-            </a>
-            <a class="btn">
-              <i class="icon-filter"></i>
-              Filters
-            </a>
-            <a class="btn" data-toggle="toolbar-tooltip" href="#" title="" data-original-title="Reload">
-              <i class="icon-refresh"></i>
-            </a>
-          </div>
-          <!-- <div class="badge">3 record</div> -->
+	<div class="el-table">
+        <div class="hidden-columns">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-      </div>
-      <div class="panel-body filters">
-        <div class="row">
-          <div class="col-md-9">
-            Add your custom filters here...
-          </div>
-          <div class="col-md-3">
-            <div class="input-group">
-              <input class="form-control" placeholder="Quick search..." type="text">
-              <span class="input-group-btn">
-                <button class="btn" type="button">
-                  <i class="icon-search"></i>
-                </button>
-              </span>
-            </div>
-          </div>
+        <div class="el-table__header-wrapper">
+            <table cellspacing="0" cellpadding="0" border="0" class="el-table__header">
+                <thead>
+                    <tr>
+                        
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">进程名</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">优先权</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">需要运行的时间</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">已经运行的时间</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">状态</div>
+                        </th>
+                        <th class="gutter" style="width: 0px;"></th>
+                    </tr>
+                </thead>
+            </table>
         </div>
-      </div>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-          	<th v-for="item in tableHeader">
-          		<div class="td-container">
-            		{{ item }}
-          		</div>
-            </th>
-            <th class="actions">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-        	<!-- success/danger/warning/active/disabled -->
-          <tr v-for="(item, index) in tableBody">
-            <td v-for="value in item">
-            	{{ value }}
-            </td>
-            <td class="action">
-              <a class="btn btn-success" data-toggle="tooltip" title="" data-original-title="Zoom" v-on:click="check(index)">
-                <i class="icon-zoom-in"></i>
-              </a>
-              <a class="btn btn-info" v-on:click="edit(index)">
-                <i class="icon-edit"></i>
-              </a>
-              <a class="btn btn-danger" v-on:click="deleteItem(index)">
-                <i class="icon-trash"></i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- <div class="panel-footer">
-        <ul class="pagination pagination-sm">
-          <li>
-            <a href="#">«</a>
-          </li>
-          <li class="active">
-            <a href="#">1</a>
-          </li>
-          <li>
-            <a href="#">2</a>
-          </li>
-          <li>
-            <a href="#">3</a>
-          </li>
-          <li>
-            <a href="#">4</a>
-          </li>
-          <li>
-            <a href="#">5</a>
-          </li>
-          <li>
-            <a href="#">6</a>
-          </li>
-          <li>
-            <a href="#">7</a>
-          </li>
-          <li>
-            <a href="#">8</a>
-          </li>
-          <li>
-            <a href="#">»</a>
-          </li>
-        </ul>
-        <div class="pull-right">
-          Showing 1 to 10 of 32 entries
+        <div class="el-table__body-wrapper">
+            <table cellspacing="0" cellpadding="0" border="0" class="el-table__body">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="cell">1</div>
+                        </td>
+                        <td>
+                            <div class="cell">2</div>
+                        </td>
+                        <td>
+                            <div class="cell">12</div>
+                        </td>
+                        <td>
+                            <div class="cell">10</div>
+                        </td>
+                        <td>
+                            <div class="cell">运行中,等待中,运行完毕</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
         </div>
-      </div> -->
     </div>
-  </div>
 </template>
 
 <script>
 	export default {
-		props: ['tableName', 'tableHeader', 'tableBody'],
+		props: [],
 		mounted() {
 
 		},
@@ -147,19 +162,7 @@
 			}
 		},
 		methods: {
-			check(index) {
-        console.log(index);
-				this.$emit("details", index);
-			},
-      addItem(){
-        this.$emit('addItem');
-      },
-			edit(index) {
-				this.$emit('edit', index);
-			},
-			deleteItem(index) {
-				this.$emit('delete', index);
-			}
+			
 		}
 	}
 </script>
