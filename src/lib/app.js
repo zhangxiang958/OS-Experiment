@@ -12,11 +12,11 @@ webpackJsonp([0,1],[
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _store = __webpack_require__(5);
+	var _store = __webpack_require__(4);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _router = __webpack_require__(27);
+	var _router = __webpack_require__(26);
 
 	var _router2 = _interopRequireDefault(_router);
 
@@ -10388,8 +10388,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 4 */,
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10402,11 +10401,11 @@ webpackJsonp([0,1],[
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vuex = __webpack_require__(6);
+	var _vuex = __webpack_require__(5);
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _User = __webpack_require__(7);
+	var _User = __webpack_require__(6);
 
 	var _User2 = _interopRequireDefault(_User);
 
@@ -10444,7 +10443,7 @@ webpackJsonp([0,1],[
 	});
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10977,7 +10976,7 @@ webpackJsonp([0,1],[
 	})));
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10987,7 +10986,7 @@ webpackJsonp([0,1],[
 	});
 	exports.SIGNOUT = exports.SIGNIN = undefined;
 
-	var _defineProperty2 = __webpack_require__(8);
+	var _defineProperty2 = __webpack_require__(7);
 
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -11018,14 +11017,14 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _defineProperty = __webpack_require__(9);
+	var _defineProperty = __webpack_require__(8);
 
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -11047,37 +11046,37 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(9), __esModule: true };
+
+/***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(10), __esModule: true };
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(11);
-	var $Object = __webpack_require__(14).Object;
+	__webpack_require__(10);
+	var $Object = __webpack_require__(13).Object;
 	module.exports = function defineProperty(it, key, desc){
 	  return $Object.defineProperty(it, key, desc);
 	};
 
 /***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $export = __webpack_require__(11);
+	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+	$export($export.S + $export.F * !__webpack_require__(21), 'Object', {defineProperty: __webpack_require__(17).f});
+
+/***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $export = __webpack_require__(12);
-	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-	$export($export.S + $export.F * !__webpack_require__(22), 'Object', {defineProperty: __webpack_require__(18).f});
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global    = __webpack_require__(13)
-	  , core      = __webpack_require__(14)
-	  , ctx       = __webpack_require__(15)
-	  , hide      = __webpack_require__(17)
+	var global    = __webpack_require__(12)
+	  , core      = __webpack_require__(13)
+	  , ctx       = __webpack_require__(14)
+	  , hide      = __webpack_require__(16)
 	  , PROTOTYPE = 'prototype';
 
 	var $export = function(type, name, source){
@@ -11137,7 +11136,7 @@ webpackJsonp([0,1],[
 	module.exports = $export;
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -11146,18 +11145,18 @@ webpackJsonp([0,1],[
 	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// optional / simple context binding
-	var aFunction = __webpack_require__(16);
+	var aFunction = __webpack_require__(15);
 	module.exports = function(fn, that, length){
 	  aFunction(fn);
 	  if(that === undefined)return fn;
@@ -11178,7 +11177,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -11187,12 +11186,12 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var dP         = __webpack_require__(18)
-	  , createDesc = __webpack_require__(26);
-	module.exports = __webpack_require__(22) ? function(object, key, value){
+	var dP         = __webpack_require__(17)
+	  , createDesc = __webpack_require__(25);
+	module.exports = __webpack_require__(21) ? function(object, key, value){
 	  return dP.f(object, key, createDesc(1, value));
 	} : function(object, key, value){
 	  object[key] = value;
@@ -11200,15 +11199,15 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var anObject       = __webpack_require__(19)
-	  , IE8_DOM_DEFINE = __webpack_require__(21)
-	  , toPrimitive    = __webpack_require__(25)
+	var anObject       = __webpack_require__(18)
+	  , IE8_DOM_DEFINE = __webpack_require__(20)
+	  , toPrimitive    = __webpack_require__(24)
 	  , dP             = Object.defineProperty;
 
-	exports.f = __webpack_require__(22) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+	exports.f = __webpack_require__(21) ? Object.defineProperty : function defineProperty(O, P, Attributes){
 	  anObject(O);
 	  P = toPrimitive(P, true);
 	  anObject(Attributes);
@@ -11221,17 +11220,17 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(20);
+	var isObject = __webpack_require__(19);
 	module.exports = function(it){
 	  if(!isObject(it))throw TypeError(it + ' is not an object!');
 	  return it;
 	};
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = function(it){
@@ -11239,24 +11238,24 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = !__webpack_require__(22) && !__webpack_require__(23)(function(){
-	  return Object.defineProperty(__webpack_require__(24)('div'), 'a', {get: function(){ return 7; }}).a != 7;
+	module.exports = !__webpack_require__(21) && !__webpack_require__(22)(function(){
+	  return Object.defineProperty(__webpack_require__(23)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(23)(function(){
+	module.exports = !__webpack_require__(22)(function(){
 	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 	});
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports) {
 
 	module.exports = function(exec){
@@ -11268,11 +11267,11 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(20)
-	  , document = __webpack_require__(13).document
+	var isObject = __webpack_require__(19)
+	  , document = __webpack_require__(12).document
 	  // in old IE typeof document.createElement is 'object'
 	  , is = isObject(document) && isObject(document.createElement);
 	module.exports = function(it){
@@ -11280,11 +11279,11 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(20);
+	var isObject = __webpack_require__(19);
 	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
 	// and the second argument - flag - preferred type is a string
 	module.exports = function(it, S){
@@ -11297,7 +11296,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = function(bitmap, value){
@@ -11310,7 +11309,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11318,7 +11317,7 @@ webpackJsonp([0,1],[
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	var index = __webpack_require__(28);
+	var index = __webpack_require__(27);
 
 	var router = [{
 		path: '/',
@@ -11329,20 +11328,20 @@ webpackJsonp([0,1],[
 	exports.default = router;
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(29)
+	__webpack_require__(28)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(33)
+	__vue_exports__ = __webpack_require__(32)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(34)
+	var __vue_template__ = __webpack_require__(43)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -11376,16 +11375,16 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(30);
+	var content = __webpack_require__(29);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(32)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -11402,21 +11401,21 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(31)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "\nbody {\n\t\tbackground: rgba(153, 153, 153, 0.8);\n}\n#wrapper {\n\t\tposition: absolute;\n\t    top: 70px;\n\t    bottom: 0;\n\t    left: 20px;\n\t    right: 20px;\n\t    /*width: 800px;*/\n\t    border: 1px solid rgba(0,0,0,0.2);\n\t    background: #fff;\n\t    /*background: #c9e5f5;*/\n\t    -moz-border-radius-topleft: 15px;\n\t    -webkit-border-top-left-radius: 15px;\n\t    border-top-left-radius: 15px;\n\t    -moz-border-radius-topright: 15px;\n\t    -webkit-border-top-right-radius: 15px;\n\t    border-top-right-radius: 15px;\n\t    -webkit-box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    overflow: hidden;\n}\n.el-dropdown-menu {\n    \tposition: absolute;\n    \ttop: 0;\n    \tleft: 0;\n\t\tmargin: 5px 0;\n    \tpadding: 6px 0;\n    \tmin-width: 100px;\n    \tbackground-color: #fff;\n    \tborder: 1px solid #d3dce6;\n    \tbox-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.12);\n    \tz-index: 10;\n    \ttransform-origin: center top 0px;\n}\n.el-dropdown-menu__item {\n\t\tlist-style: none;\n    \tline-height: 36px;\n    \tpadding: 0 10px;\n    \tmargin: 0;\n    \tcursor: pointer;\n}\n.el-dropdown-menu__item:hover {\n    \tbackground-color: #e5e9f2;\n    \tcolor: #475669;\n}\n.algorithm > div {\n\t\tfloat: left;\n\t\twidth: 25%;\n}\n.checkbox-three {\n\t\t/*display: inline-block;*/\n\t\tfloat: left;\n\t\tposition: relative;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\tline-height: 1;\n\t\tvertical-align: middle;\n}\ninput[name=\"algorithm\"] + label {\n\t\tdisplay: inline-block;\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tleft: 0;\n\t\tpadding: 9px;\n\t\tborder: 1px solid #c1caca;\n\t\tborder-radius: 1000px;\n\t\tbox-shadow: 0 1px 2px rgba(0, 0, 0, .05), inset 0 -15px 10px -12px rgba(0, 0, 0, .05);\n\t\tbackground-color: #fff;\n}\ninput[name=\"algorithm\"]:checked + label:before {\n\t\tcontent: ' ';\n\t\tposition: absolute;\n\t\ttop: 3px;\n\t\tleft: 3px;\n\t\twidth: 12px;\n\t\theight: 12px;\n\t\tborder-radius: 50%;\n\t\tbackground: #253c4b;\n\t\tbox-shadow: inset 0 15px 23px -10px rgba(187, 230, 240, .3), 0 2px 2px rgba(0, 0, 0, .1);\n\t\topacity: .8;\n}\nh3 {\n\t\ttext-align: center;\n}\n.time-input {\n\t\tposition: relative;\n\t\t/*margin: 30px auto;*/\n\t\tmargin: 30px 5px;\n\t\twidth: 80%;\n}\n.content .time-input .el-input__inner {\n\t\twidth: 20%;\n\t\tborder-radius: 4px;\n\t    border: 1px solid #c0ccda;\n}\n.time-button {\n\t\tposition: absolute;\n\t\tleft: 18%;\n\t\ttop: 24px;\n}\n", ""]);
+	exports.push([module.id, "\nbody {\n\t\tbackground: rgba(153, 153, 153, 0.8);\n}\n#wrapper {\n\t\tposition: absolute;\n\t    top: 70px;\n\t    bottom: 0;\n\t    left: 20px;\n\t    right: 20px;\n\t    /*width: 800px;*/\n\t    border: 1px solid rgba(0,0,0,0.2);\n\t    background: #fff;\n\t    /*background: #c9e5f5;*/\n\t    -moz-border-radius-topleft: 15px;\n\t    -webkit-border-top-left-radius: 15px;\n\t    border-top-left-radius: 15px;\n\t    -moz-border-radius-topright: 15px;\n\t    -webkit-border-top-right-radius: 15px;\n\t    border-top-right-radius: 15px;\n\t    -webkit-box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    overflow: hidden;\n}\n.el-dropdown-menu {\n    \tposition: absolute;\n    \ttop: 0;\n    \tleft: 0;\n\t\tmargin: 5px 0;\n    \tpadding: 6px 0;\n    \tmin-width: 100px;\n    \tbackground-color: #fff;\n    \tborder: 1px solid #d3dce6;\n    \tbox-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.12);\n    \tz-index: 10;\n    \ttransform-origin: center top 0px;\n}\n.el-dropdown-menu__item {\n\t\tlist-style: none;\n    \tline-height: 36px;\n    \tpadding: 0 10px;\n    \tmargin: 0;\n    \tcursor: pointer;\n}\n.el-dropdown-menu__item:hover {\n    \tbackground-color: #e5e9f2;\n    \tcolor: #475669;\n}\n.algorithm > div {\n\t\tfloat: left;\n\t\twidth: 25%;\n}\n.checkbox-three {\n\t\t/*display: inline-block;*/\n\t\tfloat: left;\n\t\tposition: relative;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\tline-height: 1;\n\t\tvertical-align: middle;\n}\ninput[name=\"algorithm\"] + label {\n\t\tdisplay: inline-block;\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tleft: 0;\n\t\tpadding: 9px;\n\t\tborder: 1px solid #c1caca;\n\t\tborder-radius: 1000px;\n\t\tbox-shadow: 0 1px 2px rgba(0, 0, 0, .05), inset 0 -15px 10px -12px rgba(0, 0, 0, .05);\n\t\tbackground-color: #fff;\n}\ninput[name=\"algorithm\"]:checked + label:before {\n\t\tcontent: ' ';\n\t\tposition: absolute;\n\t\ttop: 3px;\n\t\tleft: 3px;\n\t\twidth: 12px;\n\t\theight: 12px;\n\t\tborder-radius: 50%;\n\t\tbackground: #253c4b;\n\t\tbox-shadow: inset 0 15px 23px -10px rgba(187, 230, 240, .3), 0 2px 2px rgba(0, 0, 0, .1);\n\t\topacity: .8;\n}\nh3 {\n\t\ttext-align: center;\n}\nh3 .el-button--warning {\n\t\tfloat: right;\n\t\tcolor: #fff;\n\t\tfont-weight: 900;\n    \tbackground-color: #f7ba2a;\n    \tborder-color: #f7ba2a;\n}\n.time-input {\n\t\tposition: relative;\n\t\t/*margin: 30px auto;*/\n\t\tmargin: 30px 5px;\n\t\twidth: 80%;\n}\n.content .time-input .el-input__inner {\n\t\twidth: 20%;\n\t\tborder-radius: 4px;\n\t    border: 1px solid #c0ccda;\n}\n.time-button {\n\t\tposition: absolute;\n\t\tleft: 18%;\n\t\ttop: 24px;\n}\n.do-wrapper {\n\t\tposition: relative;\n\t\tmargin-top: 100px;\n}\n.do-wrapper .el-button--success {\n\t\tposition: absolute;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\twidth: 300px;\n\t\t/*height: 100px;*/\n\t\tmargin: 0 auto;\n\t\tcolor: #fff;\n\t\tfont-weight: 900;\n    \tbackground-color: #13ce66;\n    \tborder-color: #13ce66;\n}\n\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 31 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/*
@@ -11472,7 +11471,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 32 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11694,7 +11693,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 33 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11703,16 +11702,54 @@ webpackJsonp([0,1],[
 		value: true
 	});
 
-	var _table = __webpack_require__(35);
+	var _table = __webpack_require__(33);
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _inputArea = __webpack_require__(40);
+	var _inputArea = __webpack_require__(38);
 
 	var _inputArea2 = _interopRequireDefault(_inputArea);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -11894,14 +11931,15 @@ webpackJsonp([0,1],[
 				message: 'Hello World',
 				count: 0,
 				dataStruct: {
-					name: '',
-					right: 0,
-					nTime: 0,
-					rTime: 0,
-					time: 0,
-					state: ''
+					name: '', //进程名
+					right: 0, //优先权
+					nTime: 0, //需要运行的时间
+					rTime: 0, //已运行时间
+					time: 0, //
+					state: '' //运行状态
 				},
-				dataStruct_Array: []
+				dataStruct_Array: [],
+				algorithmType: 0
 			};
 		},
 
@@ -11916,9 +11954,40 @@ webpackJsonp([0,1],[
 			},
 			ChoosetheAlgorithm: function ChoosetheAlgorithm(event) {
 				// console.log(event.currentTarget);
-				console.log(event.currentTarget.firstElementChild);
-				event.currentTarget.firstElementChild.firstElementChild.className += ' is-checked';
 				console.log(event.target.value);
+				this.algorithmType = event.target.value;
+			},
+			executeAlgorithm: function executeAlgorithm() {
+
+				switch (this.algorithmType) {
+					case "1":
+						console.log("111");
+						this.StaticPriority();
+						break;
+					case "2":
+						this.DynamicPriority();
+						break;
+					case "3":
+						this.SimplePath();
+						break;
+					case "4":
+						this.VariableTime();
+						break;
+					default:
+						alert("请先选择算法");
+				}
+			},
+			StaticPriority: function StaticPriority() {
+				alert("StaticPriority");
+			},
+			DynamicPriority: function DynamicPriority() {
+				alert("DynamicPriority");
+			},
+			SimplePath: function SimplePath() {
+				alert("SimplePath");
+			},
+			VariableTime: function VariableTime() {
+				alert("VariableTime");
 			}
 		},
 		components: {
@@ -11927,129 +11996,20 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _h('div', {
-	    attrs: {
-	      "id": "wrapper"
-	    }
-	  }, [_h('div', {
-	    staticClass: "content"
-	  }, [_h('LogTable'), " ", _h('h3', ["[进程控制台]"]), " ", _h('InputArea'), " ", _vm._m(0), " ", _vm._m(1)]), " "])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _h('div', {
-	    staticClass: "time-input"
-	  }, ["\n\t\t\t\t请输入时间片:\n\t\t\t\t", _h('input', {
-	    staticClass: "el-input__inner",
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "请输入内容",
-	      "autocomplete": "off"
-	    }
-	  }), " ", _h('button', {
-	    staticClass: "el-button time-button",
-	    attrs: {
-	      "type": "button"
-	    }
-	  }, [_h('span', ["确定"])])])
-	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
-	    staticClass: "algorithm"
-	  }, [_h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "1",
-	      "id": "StaticPriority",
-	      "name": "algorithm"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "StaticPriority"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "StaticPriority"
-	    }
-	  }, ["静态优先权算法"])])]), " ", _h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "2",
-	      "id": "DynamicPriority",
-	      "name": "algorithm"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "DynamicPriority"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "DynamicPriority"
-	    }
-	  }, ["动态优先权算法"])])]), " ", _h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "3",
-	      "id": "SimplePath",
-	      "name": "algorithm"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "SimplePath"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "SimplePath"
-	    }
-	  }, ["简单轮转法"])])]), " ", _h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "4",
-	      "id": "VariableTime",
-	      "name": "algorithm"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "VariableTime"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "VariableTime"
-	    }
-	  }, ["可变时间片轮转法"])])])])])
-	}]}
-	module.exports.render._withStripped = true
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1e259c4f", module.exports)
-	  }
-	}
-
-/***/ },
-/* 35 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(36)
+	__webpack_require__(34)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(38)
+	__vue_exports__ = __webpack_require__(36)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(39)
+	var __vue_template__ = __webpack_require__(37)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -12083,16 +12043,16 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 36 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(37);
+	var content = __webpack_require__(35);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(32)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -12109,10 +12069,10 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 37 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(31)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -12123,7 +12083,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 38 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12295,7 +12255,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 39 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -12389,20 +12349,20 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 40 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(41)
+	__webpack_require__(39)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(43)
+	__vue_exports__ = __webpack_require__(41)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(44)
+	var __vue_template__ = __webpack_require__(42)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -12436,16 +12396,16 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 41 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(42);
+	var content = __webpack_require__(40);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(32)(content, {});
+	var update = __webpack_require__(31)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -12462,10 +12422,10 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 42 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(31)();
+	exports = module.exports = __webpack_require__(30)();
 	// imports
 
 
@@ -12476,7 +12436,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 43 */
+/* 41 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -12611,7 +12571,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 44 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
@@ -12717,6 +12677,143 @@ webpackJsonp([0,1],[
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-70536f82", module.exports)
+	  }
+	}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
+	    attrs: {
+	      "id": "wrapper"
+	    }
+	  }, [_h('div', {
+	    staticClass: "content"
+	  }, [_h('LogTable'), " ", _vm._m(0), " ", _h('InputArea'), " ", _vm._m(1), " ", _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
+	    staticClass: "algorithm"
+	  }, [_h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "1",
+	      "id": "StaticPriority",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "StaticPriority"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "StaticPriority"
+	    }
+	  }, ["静态优先权算法"])])]), " ", _h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "2",
+	      "id": "DynamicPriority",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "DynamicPriority"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "DynamicPriority"
+	    }
+	  }, ["动态优先权算法"])])]), " ", _h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "3",
+	      "id": "SimplePath",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "SimplePath"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "SimplePath"
+	    }
+	  }, ["简单轮转法"])])]), " ", _h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "4",
+	      "id": "VariableTime",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "VariableTime"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "VariableTime"
+	    }
+	  }, ["可变时间片轮转法"])])])])]), " ", _h('div', {
+	    staticClass: "do-wrapper"
+	  }, [_h('button', {
+	    staticClass: "el-button el-button--success",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.executeAlgorithm
+	    }
+	  }, [_h('span', ["执行算法"])])])]), " "])
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('h3', ["\n\t\t\t\t[进程控制台]\n\t\t\t\t", _h('button', {
+	    staticClass: "el-button el-button--warning",
+	    attrs: {
+	      "type": "button"
+	    }
+	  }, [_h('span', ["重置"])])])
+	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
+	    staticClass: "time-input"
+	  }, ["\n\t\t\t\t请输入时间片:\n\t\t\t\t", _h('input', {
+	    staticClass: "el-input__inner",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入内容",
+	      "autocomplete": "off",
+	      "id": "timeInput"
+	    }
+	  }), " ", _h('button', {
+	    staticClass: "el-button time-button",
+	    attrs: {
+	      "type": "button"
+	    }
+	  }, [_h('span', ["确定"])])])
+	}]}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1e259c4f", module.exports)
 	  }
 	}
 

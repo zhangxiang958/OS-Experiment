@@ -87,6 +87,13 @@
 	h3 {
 		text-align: center;
 	}
+	h3 .el-button--warning {
+		float: right;
+		color: #fff;
+		font-weight: 900;
+    	background-color: #f7ba2a;
+    	border-color: #f7ba2a;	
+	}
 	.time-input {
 		position: relative;
 		/*margin: 30px auto;*/
@@ -103,17 +110,41 @@
 		left: 18%;
 		top: 24px;
 	}
+	.do-wrapper {
+		position: relative;
+		margin-top: 100px;
+	}
+	.do-wrapper .el-button--success {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 300px;
+		/*height: 100px;*/
+		margin: 0 auto;
+		color: #fff;
+		font-weight: 900;
+    	background-color: #13ce66;
+    	border-color: #13ce66;
+	}
+
 </style>
 
 <template>
 	<div id="wrapper">
 		<div class="content">
 			<LogTable />
-			<h3>[进程控制台]</h3>
+			<h3>
+				[进程控制台]
+				<button type="button" class="el-button el-button--warning">
+					<!---->
+					<!---->
+					<span>重置</span>
+				</button>
+			</h3>
 			<InputArea />
 			<div class="time-input">
 				请输入时间片:
-				<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner">
+				<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" id="timeInput">
 				<button type="button" class="el-button time-button">
             		<!---->
             		<!---->
@@ -125,34 +156,41 @@
 				<div class="algorithm">
 				    <div>
 				    	<div class="checkbox-three">
-							<input type="radio" value="1" id="StaticPriority" name="algorithm" />
+							<input type="radio" value="1" id="StaticPriority" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
 							<label for="StaticPriority"></label>
 							<label for="StaticPriority">静态优先权算法</label>
 						</div>
 				    </div>
 					<div>
 						<div class="checkbox-three">
-							<input type="radio" value="2" id="DynamicPriority" name="algorithm" />
+							<input type="radio" value="2" id="DynamicPriority" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
 							<label for="DynamicPriority"></label>
 							<label for="DynamicPriority">动态优先权算法</label>
 						</div>
 					</div>
 					<div>
 						<div class="checkbox-three">
-							<input type="radio" value="3" id="SimplePath" name="algorithm" />
+							<input type="radio" value="3" id="SimplePath" name="algorithm"v-on:change="ChoosetheAlgorithm" />
 							<label for="SimplePath"></label>
 							<label for="SimplePath">简单轮转法</label>
 						</div>
 					</div>
 					<div>
 						<div class="checkbox-three">
-							<input type="radio" value="4" id="VariableTime" name="algorithm" />
+							<input type="radio" value="4" id="VariableTime" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
 							<label for="VariableTime"></label>
 							<label for="VariableTime">可变时间片轮转法</label>
 						</div>
 					</div>
-
+					
 				</div>
+			</div>
+			<div class="do-wrapper">
+				<button type="button" class="el-button el-button--success" @click="executeAlgorithm">
+					<!---->
+					<!---->
+					<span>执行算法</span>
+				</button>
 			</div>
 		</div>
 		<!-- <ul class="el-dropdown-menu">
@@ -182,14 +220,15 @@
 				message: 'Hello World',
 				count: 0,
 				dataStruct: {
-					name: '',
-					right: 0,
-					nTime: 0,
-					rTime: 0,
-					time: 0,
-					state: ''
+					name: '',    //进程名
+					right: 0,    //优先权
+					nTime: 0,	 //需要运行的时间
+					rTime: 0,    //已运行时间
+					time: 0,	 //
+					state: ''    //运行状态
 				},
-				dataStruct_Array: []
+				dataStruct_Array: [],
+				algorithmType: 0
 			}
 		},
 		computed: {
@@ -203,9 +242,40 @@
 			},
 			ChoosetheAlgorithm(event) {
 				// console.log(event.currentTarget);
-				console.log(event.currentTarget.firstElementChild);
-				event.currentTarget.firstElementChild.firstElementChild.className += ' is-checked';
 				console.log(event.target.value);
+				this.algorithmType = event.target.value;
+			},
+			executeAlgorithm() {
+
+				switch(this.algorithmType){
+					case "1": 
+						console.log("111");
+						this.StaticPriority();
+						break;
+					case "2": 
+						this.DynamicPriority();
+						break;
+					case "3":
+						this.SimplePath();
+						break;
+					case "4": 
+						this.VariableTime();
+						break;
+					default: 
+						alert("请先选择算法");				
+				} 
+			},
+			StaticPriority() {
+				alert("StaticPriority");
+			}, 
+			DynamicPriority() {
+				alert("DynamicPriority");
+			},
+			SimplePath() {
+				alert("SimplePath");
+			},
+			VariableTime() {
+				alert("VariableTime");
 			}
 		},
 		components: {
