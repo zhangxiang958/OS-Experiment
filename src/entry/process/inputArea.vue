@@ -69,10 +69,10 @@
                             <div class="cell">进程名</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">到达时间</div>
+                            <div class="cell">优先权</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">服务时间</div>
+                            <div class="cell">需要运行的时间</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell"></div>
@@ -93,12 +93,12 @@
                         </td>
                         <td>
                             <div class="cell">
-                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="arriveTime">
+                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="right">
                             </div>
                         </td>
                         <td>
                             <div class="cell">
-                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="serveTime">
+                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="time">
                             </div>
                         </td>
                         <td>
@@ -122,29 +122,30 @@
 		data() {
 			return {
 				processName: '',
-				arriveTime: '',
-				serveTime: ''
+				right: '',
+				time: ''
 			}
 		},
 		methods: {
 			joinProcess() {
-				if(!this.processName || !this.arriveTime || !this.serveTime) {
+				if(!this.processName || !this.right || !this.time) {
 					alert("请输入数据!");
 					return;
 				} else {
 					var processData = {
 						name: this.processName,
-						arriveTime: this.arriveTime,
-						serveTime: this.serveTime,
-						completeTime: 0,
+						right: this.right,
+						nTime: this.time,
+						rTime: 0,
+						time: 0,
 						state: '等待中'
 					};
 					console.log(processData);
 					this.$emit('join', processData);
 
 					this.processName = '';
-					this.arriveTime = '';
-					this.serveTime = '';
+					this.right = '';
+					this.time = '';
 				}
 				
 			}

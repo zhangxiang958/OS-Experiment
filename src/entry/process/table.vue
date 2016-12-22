@@ -103,7 +103,7 @@
                 <thead>
                     <tr>
                         
-                        <!-- <th colspan="1" rowspan="1" class="is-leaf">
+                        <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">进程名</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
@@ -114,22 +114,6 @@
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">已经运行的时间</div>
-                        </th>
-                        <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">状态</div>
-                        </th>
-                        <th class="gutter" style="width: 0px;"></th> -->
-                        <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">进程名</div>
-                        </th>
-                        <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">到达时间</div>
-                        </th>
-                        <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">服务时间</div>
-                        </th>
-                        <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">完成时间</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">状态</div>
@@ -148,13 +132,13 @@
                             <div class="cell">{{ item.name }}</div>
                         </td>
                         <td>
-                            <div class="cell">{{ item.arriveTime }}</div>
+                            <div class="cell">{{ item.right }}</div>
                         </td>
                         <td>
-                            <div class="cell">{{ item.serveTime }}</div>
+                            <div class="cell">{{ item.nTime }}</div>
                         </td>
                         <td>
-                            <div class="cell">{{ item.completeTime }}</div>
+                            <div class="cell">{{ item.rTime }}</div>
                         </td>
                         <td>
                             <!-- 运行中,等待中,运行完毕 -->

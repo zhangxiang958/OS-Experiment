@@ -146,33 +146,42 @@
 			<InputArea 
 				v-on:join="joinProcess"
 			/>
-			<!-- <div class="time-input">
+			<div class="time-input">
 				请输入时间片:
 				<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" id="timeInput" v-model="time">
 				<button type="button" class="el-button time-button" @click="submitTime">
+            		<!---->
+            		<!---->
             		<span>确定</span>
             	</button>
-			</div> -->
+			</div>
 			<div>
 				<h4>选择算法:</h4>
 				<div class="algorithm">
 				    <div>
 				    	<div class="checkbox-three">
-							<input type="radio" value="1" id="FCFS" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
-							<label for="FCFS"></label>
-							<label for="FCFS">先来先服务调度算法</label>
+							<input type="radio" value="1" id="StaticPriority" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
+							<label for="StaticPriority"></label>
+							<label for="StaticPriority">静态优先权算法</label>
 						</div>
 				    </div>
+					<!-- <div>
+						<div class="checkbox-three">
+							<input type="radio" value="2" id="DynamicPriority" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
+							<label for="DynamicPriority"></label>
+							<label for="DynamicPriority">动态优先权算法</label>
+						</div>
+					</div> -->
 					<div>
 						<div class="checkbox-three">
-							<input type="radio" value="2" id="SJF" name="algorithm"v-on:change="ChoosetheAlgorithm" />
-							<label for="SJF"></label>
-							<label for="SJF">SJF调度算法</label>
+							<input type="radio" value="3" id="SimplePath" name="algorithm"v-on:change="ChoosetheAlgorithm" />
+							<label for="SimplePath"></label>
+							<label for="SimplePath">简单轮转法</label>
 						</div>
 					</div>
 					<div>
 						<div class="checkbox-three">
-							<input type="radio" value="3" id="VariableTime" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
+							<input type="radio" value="4" id="VariableTime" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
 							<label for="VariableTime"></label>
 							<label for="VariableTime">可变时间片轮转法</label>
 						</div>
@@ -215,32 +224,33 @@
 				message: 'Hello World',
 				count: 0,
 				dataStruct: {
-					name: '',    		//进程名
-					arriveTime: 0,    	//到达时间
-					serveTime: 0,	 	//服务时间
-					completeTime: 0,    //完成时间
-					state: ''    		//运行状态
+					name: '',    //进程名
+					right: 0,    //优先权
+					nTime: 0,	 //需要运行的时间
+					rTime: 0,    //已运行时间
+					time: 0,	 //
+					state: ''    //运行状态
 				},
 				dataStruct_Array: [
 				{
 					name: 'a',
-					arriveTime: 0,    	//到达时间
-					serveTime: 2,	 	//服务时间
-					completeTime: 0,    //完成时间
+					right: '5',
+					nTime: 1,
+					rTime: 0,
 					state: '等待中'
 				},
 				{
 					name: 'b',
-					arriveTime: 1,    	//到达时间
-					serveTime: 1,	 	//服务时间
-					completeTime: 0,    //完成时间
+					right: '2',
+					nTime: 2,
+					rTime: 0,
 					state: '等待中'
 				},
 				{
 					name: 'c',
-					arriveTime: 2,    	//到达时间
-					serveTime: 3,	 	//服务时间
-					completeTime: 0,    //完成时间
+					right: '3',
+					nTime: 3,
+					rTime: 0,
 					state: '等待中'
 				}],
 				algorithmType: 0,
@@ -253,6 +263,9 @@
 			}
 		},
 		methods: {
+			testMdl() {
+				alert("!!!!!");
+			},
 			reset() {
 				this.dataStruct_Array = [];
 			},
@@ -261,13 +274,13 @@
 				console.log(event.target.value);
 				this.algorithmType = event.target.value;
 			},
-			// submitTime() {
-			// 	if(this.time === 0) {
-			// 		alert("请输入时间片");
-			// 	} else {
-			// 		alert("时间片已确定");
-			// 	}
-			// },
+			submitTime() {
+				if(this.time === 0) {
+					alert("请输入时间片");
+				} else {
+					alert("时间片已确定");
+				}
+			},
 			joinProcess(processData) {
 				console.log(processData);
 				this.dataStruct_Array.push(processData);
@@ -276,27 +289,109 @@
 
 				switch(this.algorithmType){
 					case "1": 
-						this.FCFS();
+						this.StaticPriority();
 						break;
 					case "2": 
-						this.SJF();
+						this.DynamicPriority();
 						break;
 					case "3":
 						this.SimplePath();
+						break;
+					case "4": 
+						this.VariableTime();
 						break;
 					default: 
 						alert("请先选择算法");				
 				} 
 			},
-			FCFS() {
-				alert("FSFC");
+			StaticPriority() {
+				
+				if(!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+					console.log(this.dataStruct_Array);
+					this.dataStruct_Array.sort(this.compare('right'));
+					console.log(this.dataStruct_Array);
+					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+
+				}
+				
+			}, 
+			// DynamicPriority() {
+			// 	alert("DynamicPriority");
+			// },
+			SimplePath() {
+				// alert("SimplePath");
+
+				if(!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+
+				}
 
 			},
-			SJF() {
-				alert("SJF");
+			Core(n, i) {
+				var  start = new Date().getTime();   
+
+			    // this.dataStruct_Array[i].state = '运行中';
+
+			    console.log(this.dataStruct_Array);
+			    this.$set(this.dataStruct_Array[i], 'state', '运行中');
+			    $($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('运行中');
+			   	alert("时间片执行完毕");
+			    // this.dataStruct_Array = [];
+			    console.log(this.dataStruct_Array);
+			    while(true) {
+			    	if(new Date().getTime() - start > n) {
+
+						this.dataStruct_Array[i].rTime += this.time;
+			    		$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataStruct_Array[i].rTime.toString());
+
+						console.log(this.dataStruct_Array[i]);
+						
+						if(this.dataStruct_Array[i].rTime == this.dataStruct_Array[i].nTime){
+							//break
+							this.dataStruct_Array[i].state = '已完成';
+							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('已完成');
+							// this.dataStruct_Array.splice(i, 1);
+							// i ++;
+						} else {
+							i --;
+						}
+			    		return i;	
+			    	} 
+			    }
 			},
-			Core() {
-				
+			VariableTime() {
+				// alert("VariableTime");
+				if(!this.dataStruct_Array.length || !this.time) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+
+				}
+			},
+			compare(prop) {
+				return function(a, b){
+					var value1 = a[prop];
+					var value2 = b[prop];
+					return value1 - value2;
+				}
 			}
 		},
 		components: {

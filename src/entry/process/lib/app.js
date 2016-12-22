@@ -11912,6 +11912,15 @@ webpackJsonp([0,1],[
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		created: function created() {
@@ -11927,28 +11936,29 @@ webpackJsonp([0,1],[
 				count: 0,
 				dataStruct: {
 					name: '', //进程名
-					arriveTime: 0, //到达时间
-					serveTime: 0, //服务时间
-					completeTime: 0, //完成时间
+					right: 0, //优先权
+					nTime: 0, //需要运行的时间
+					rTime: 0, //已运行时间
+					time: 0, //
 					state: '' //运行状态
 				},
 				dataStruct_Array: [{
 					name: 'a',
-					arriveTime: 0, //到达时间
-					serveTime: 2, //服务时间
-					completeTime: 0, //完成时间
+					right: '5',
+					nTime: 1,
+					rTime: 0,
 					state: '等待中'
 				}, {
 					name: 'b',
-					arriveTime: 1, //到达时间
-					serveTime: 1, //服务时间
-					completeTime: 0, //完成时间
+					right: '2',
+					nTime: 2,
+					rTime: 0,
 					state: '等待中'
 				}, {
 					name: 'c',
-					arriveTime: 2, //到达时间
-					serveTime: 3, //服务时间
-					completeTime: 0, //完成时间
+					right: '3',
+					nTime: 3,
+					rTime: 0,
 					state: '等待中'
 				}],
 				algorithmType: 0,
@@ -11962,6 +11972,9 @@ webpackJsonp([0,1],[
 			}
 		},
 		methods: {
+			testMdl: function testMdl() {
+				alert("!!!!!");
+			},
 			reset: function reset() {
 				this.dataStruct_Array = [];
 			},
@@ -11970,14 +11983,13 @@ webpackJsonp([0,1],[
 				console.log(event.target.value);
 				this.algorithmType = event.target.value;
 			},
-
-			// submitTime() {
-			// 	if(this.time === 0) {
-			// 		alert("请输入时间片");
-			// 	} else {
-			// 		alert("时间片已确定");
-			// 	}
-			// },
+			submitTime: function submitTime() {
+				if (this.time === 0) {
+					alert("请输入时间片");
+				} else {
+					alert("时间片已确定");
+				}
+			},
 			joinProcess: function joinProcess(processData) {
 				console.log(processData);
 				this.dataStruct_Array.push(processData);
@@ -11986,25 +11998,106 @@ webpackJsonp([0,1],[
 
 				switch (this.algorithmType) {
 					case "1":
-						this.FCFS();
+						this.StaticPriority();
 						break;
 					case "2":
-						this.SJF();
+						this.DynamicPriority();
 						break;
 					case "3":
 						this.SimplePath();
+						break;
+					case "4":
+						this.VariableTime();
 						break;
 					default:
 						alert("请先选择算法");
 				}
 			},
-			FCFS: function FCFS() {
-				alert("FSFC");
+			StaticPriority: function StaticPriority() {
+
+				if (!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+					console.log(this.dataStruct_Array);
+					this.dataStruct_Array.sort(this.compare('right'));
+					console.log(this.dataStruct_Array);
+					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+				}
 			},
-			SJF: function SJF() {
-				alert("SJF");
+
+			// DynamicPriority() {
+			// 	alert("DynamicPriority");
+			// },
+			SimplePath: function SimplePath() {
+				// alert("SimplePath");
+
+				if (!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+				}
 			},
-			Core: function Core() {}
+			Core: function Core(n, i) {
+				var start = new Date().getTime();
+
+				// this.dataStruct_Array[i].state = '运行中';
+
+				console.log(this.dataStruct_Array);
+				this.$set(this.dataStruct_Array[i], 'state', '运行中');
+				$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('运行中');
+				alert("时间片执行完毕");
+				// this.dataStruct_Array = [];
+				console.log(this.dataStruct_Array);
+				while (true) {
+					if (new Date().getTime() - start > n) {
+
+						this.dataStruct_Array[i].rTime += this.time;
+						$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataStruct_Array[i].rTime.toString());
+
+						console.log(this.dataStruct_Array[i]);
+
+						if (this.dataStruct_Array[i].rTime == this.dataStruct_Array[i].nTime) {
+							//break
+							this.dataStruct_Array[i].state = '已完成';
+							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('已完成');
+							// this.dataStruct_Array.splice(i, 1);
+							// i ++;
+						} else {
+							i--;
+						}
+						return i;
+					}
+				}
+			},
+			VariableTime: function VariableTime() {
+				// alert("VariableTime");
+				if (!this.dataStruct_Array.length || !this.time) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+				}
+			},
+			compare: function compare(prop) {
+				return function (a, b) {
+					var value1 = a[prop];
+					var value2 = b[prop];
+					return value1 - value2;
+				};
+			}
 		},
 		components: {
 			LogTable: _table2.default, InputArea: _inputArea2.default
@@ -12261,22 +12354,6 @@ webpackJsonp([0,1],[
 	//
 	//
 	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 
 	exports.default = {
 		props: ['processArray'],
@@ -12309,11 +12386,11 @@ webpackJsonp([0,1],[
 	      staticClass: "cell"
 	    }, [_vm._s(item.name)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.arriveTime)])]), " ", _h('td', [_h('div', {
+	    }, [_vm._s(item.right)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.serveTime)])]), " ", _h('td', [_h('div', {
+	    }, [_vm._s(item.nTime)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.completeTime)])]), " ", _h('td', [_h('div', {
+	    }, [_vm._s(item.rTime)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
 	    }, [_vm._s(item.state)])])])
 	  })])])])])
@@ -12347,7 +12424,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["到达时间"])]), " ", _h('th', {
+	  }, ["优先权"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12355,7 +12432,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["服务时间"])]), " ", _h('th', {
+	  }, ["需要运行的时间"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12363,7 +12440,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["完成时间"])]), " ", _h('th', {
+	  }, ["已经运行的时间"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12606,30 +12683,31 @@ webpackJsonp([0,1],[
 		data: function data() {
 			return {
 				processName: '',
-				arriveTime: '',
-				serveTime: ''
+				right: '',
+				time: ''
 			};
 		},
 
 		methods: {
 			joinProcess: function joinProcess() {
-				if (!this.processName || !this.arriveTime || !this.serveTime) {
+				if (!this.processName || !this.right || !this.time) {
 					alert("请输入数据!");
 					return;
 				} else {
 					var processData = {
 						name: this.processName,
-						arriveTime: this.arriveTime,
-						serveTime: this.serveTime,
-						completeTime: 0,
+						right: this.right,
+						nTime: this.time,
+						rTime: 0,
+						time: 0,
 						state: '等待中'
 					};
 					console.log(processData);
 					this.$emit('join', processData);
 
 					this.processName = '';
-					this.arriveTime = '';
-					this.serveTime = '';
+					this.right = '';
+					this.time = '';
 				}
 			}
 		}
@@ -12681,8 +12759,8 @@ webpackJsonp([0,1],[
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.arriveTime),
-	      expression: "arriveTime"
+	      value: (_vm.right),
+	      expression: "right"
 	    }],
 	    staticClass: "el-input__inner",
 	    attrs: {
@@ -12691,12 +12769,12 @@ webpackJsonp([0,1],[
 	      "autocomplete": "off"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.arriveTime)
+	      "value": _vm._s(_vm.right)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.arriveTime = $event.target.value
+	        _vm.right = $event.target.value
 	      }
 	    }
 	  })])]), " ", _h('td', [_h('div', {
@@ -12705,8 +12783,8 @@ webpackJsonp([0,1],[
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.serveTime),
-	      expression: "serveTime"
+	      value: (_vm.time),
+	      expression: "time"
 	    }],
 	    staticClass: "el-input__inner",
 	    attrs: {
@@ -12715,12 +12793,12 @@ webpackJsonp([0,1],[
 	      "autocomplete": "off"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.serveTime)
+	      "value": _vm._s(_vm.time)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.serveTime = $event.target.value
+	        _vm.time = $event.target.value
 	      }
 	    }
 	  })])]), " ", _h('td', [_h('div', {
@@ -12764,7 +12842,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["到达时间"])]), " ", _h('th', {
+	  }, ["优先权"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12772,7 +12850,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["服务时间"])]), " ", _h('th', {
+	  }, ["需要运行的时间"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12822,7 +12900,40 @@ webpackJsonp([0,1],[
 	    on: {
 	      "join": _vm.joinProcess
 	    }
-	  }), " ", " ", _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
+	  }), " ", _h('div', {
+	    staticClass: "time-input"
+	  }, ["\n\t\t\t\t请输入时间片:\n\t\t\t\t", _h('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.time),
+	      expression: "time"
+	    }],
+	    staticClass: "el-input__inner",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入内容",
+	      "autocomplete": "off",
+	      "id": "timeInput"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.time)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.time = $event.target.value
+	      }
+	    }
+	  }), " ", _h('button', {
+	    staticClass: "el-button time-button",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.submitTime
+	    }
+	  }, [_h('span', ["确定"])])]), " ", _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
 	    staticClass: "algorithm"
 	  }, [_h('div', [_h('div', {
 	    staticClass: "checkbox-three"
@@ -12830,7 +12941,7 @@ webpackJsonp([0,1],[
 	    attrs: {
 	      "type": "radio",
 	      "value": "1",
-	      "id": "FCFS",
+	      "id": "StaticPriority",
 	      "name": "algorithm"
 	    },
 	    on: {
@@ -12838,38 +12949,38 @@ webpackJsonp([0,1],[
 	    }
 	  }), " ", _h('label', {
 	    attrs: {
-	      "for": "FCFS"
+	      "for": "StaticPriority"
 	    }
 	  }), " ", _h('label', {
 	    attrs: {
-	      "for": "FCFS"
+	      "for": "StaticPriority"
 	    }
-	  }, ["先来先服务调度算法"])])]), " ", _h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "2",
-	      "id": "SJF",
-	      "name": "algorithm"
-	    },
-	    on: {
-	      "change": _vm.ChoosetheAlgorithm
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "SJF"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "SJF"
-	    }
-	  }, ["SJF调度算法"])])]), " ", _h('div', [_h('div', {
+	  }, ["静态优先权算法"])])]), " ", " ", _h('div', [_h('div', {
 	    staticClass: "checkbox-three"
 	  }, [_h('input', {
 	    attrs: {
 	      "type": "radio",
 	      "value": "3",
+	      "id": "SimplePath",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "SimplePath"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "SimplePath"
+	    }
+	  }, ["简单轮转法"])])]), " ", _h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "4",
 	      "id": "VariableTime",
 	      "name": "algorithm"
 	    },
