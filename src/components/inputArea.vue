@@ -88,22 +88,22 @@
                     <tr>
                         <td>
                             <div class="cell">
-                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner">
+                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="processName">
                             </div>
                         </td>
                         <td>
                             <div class="cell">
-                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner">
+                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="right">
                             </div>
                         </td>
                         <td>
                             <div class="cell">
-                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner">
+                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="time">
                             </div>
                         </td>
                         <td>
                             <div class="cell">
-                            	<button type="button" class="el-button el-button--default">
+                            	<button type="button" class="el-button el-button--default" @click="joinProcess">
                             		<!---->
                             		<!---->
                             		<span>加入该进程</span>
@@ -121,7 +121,33 @@
 	export default {
 		data() {
 			return {
+				processName: '',
+				right: '',
+				time: ''
+			}
+		},
+		methods: {
+			joinProcess() {
+				if(!this.processName || !this.right || !this.time) {
+					alert("请输入数据!");
+					return;
+				} else {
+					var processData = {
+						name: this.processName,
+						right: this.right,
+						nTime: this.time,
+						rTime: 0,
+						time: 0,
+						state: '等待中'
+					};
+					console.log(processData);
+					this.$emit('join', processData);
 
+					this.processName = '';
+					this.right = '';
+					this.time = '';
+				}
+				
 			}
 		}
 	}

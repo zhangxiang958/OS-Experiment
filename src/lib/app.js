@@ -11409,7 +11409,7 @@ webpackJsonp([0,1],[
 
 
 	// module
-	exports.push([module.id, "\nbody {\n\t\tbackground: rgba(153, 153, 153, 0.8);\n}\n#wrapper {\n\t\tposition: absolute;\n\t    top: 70px;\n\t    bottom: 0;\n\t    left: 20px;\n\t    right: 20px;\n\t    /*width: 800px;*/\n\t    border: 1px solid rgba(0,0,0,0.2);\n\t    background: #fff;\n\t    /*background: #c9e5f5;*/\n\t    -moz-border-radius-topleft: 15px;\n\t    -webkit-border-top-left-radius: 15px;\n\t    border-top-left-radius: 15px;\n\t    -moz-border-radius-topright: 15px;\n\t    -webkit-border-top-right-radius: 15px;\n\t    border-top-right-radius: 15px;\n\t    -webkit-box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    overflow: hidden;\n}\n.el-dropdown-menu {\n    \tposition: absolute;\n    \ttop: 0;\n    \tleft: 0;\n\t\tmargin: 5px 0;\n    \tpadding: 6px 0;\n    \tmin-width: 100px;\n    \tbackground-color: #fff;\n    \tborder: 1px solid #d3dce6;\n    \tbox-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.12);\n    \tz-index: 10;\n    \ttransform-origin: center top 0px;\n}\n.el-dropdown-menu__item {\n\t\tlist-style: none;\n    \tline-height: 36px;\n    \tpadding: 0 10px;\n    \tmargin: 0;\n    \tcursor: pointer;\n}\n.el-dropdown-menu__item:hover {\n    \tbackground-color: #e5e9f2;\n    \tcolor: #475669;\n}\n.algorithm > div {\n\t\tfloat: left;\n\t\twidth: 25%;\n}\n.checkbox-three {\n\t\t/*display: inline-block;*/\n\t\tfloat: left;\n\t\tposition: relative;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\tline-height: 1;\n\t\tvertical-align: middle;\n}\ninput[name=\"algorithm\"] + label {\n\t\tdisplay: inline-block;\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tleft: 0;\n\t\tpadding: 9px;\n\t\tborder: 1px solid #c1caca;\n\t\tborder-radius: 1000px;\n\t\tbox-shadow: 0 1px 2px rgba(0, 0, 0, .05), inset 0 -15px 10px -12px rgba(0, 0, 0, .05);\n\t\tbackground-color: #fff;\n}\ninput[name=\"algorithm\"]:checked + label:before {\n\t\tcontent: ' ';\n\t\tposition: absolute;\n\t\ttop: 3px;\n\t\tleft: 3px;\n\t\twidth: 12px;\n\t\theight: 12px;\n\t\tborder-radius: 50%;\n\t\tbackground: #253c4b;\n\t\tbox-shadow: inset 0 15px 23px -10px rgba(187, 230, 240, .3), 0 2px 2px rgba(0, 0, 0, .1);\n\t\topacity: .8;\n}\nh3 {\n\t\ttext-align: center;\n}\nh3 .el-button--warning {\n\t\tfloat: right;\n\t\tcolor: #fff;\n\t\tfont-weight: 900;\n    \tbackground-color: #f7ba2a;\n    \tborder-color: #f7ba2a;\n}\n.time-input {\n\t\tposition: relative;\n\t\t/*margin: 30px auto;*/\n\t\tmargin: 30px 5px;\n\t\twidth: 80%;\n}\n.content .time-input .el-input__inner {\n\t\twidth: 20%;\n\t\tborder-radius: 4px;\n\t    border: 1px solid #c0ccda;\n}\n.time-button {\n\t\tposition: absolute;\n\t\tleft: 18%;\n\t\ttop: 24px;\n}\n.do-wrapper {\n\t\tposition: relative;\n\t\tmargin-top: 100px;\n}\n.do-wrapper .el-button--success {\n\t\tposition: absolute;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\twidth: 300px;\n\t\t/*height: 100px;*/\n\t\tmargin: 0 auto;\n\t\tcolor: #fff;\n\t\tfont-weight: 900;\n    \tbackground-color: #13ce66;\n    \tborder-color: #13ce66;\n}\n\n", ""]);
+	exports.push([module.id, "\nbody {\n\t\tbackground: rgba(153, 153, 153, 0.8);\n}\n#wrapper {\n\t\tposition: absolute;\n\t    top: 70px;\n\t    bottom: 0;\n\t    left: 20px;\n\t    right: 20px;\n\t    /*width: 800px;*/\n\t    border: 1px solid rgba(0,0,0,0.2);\n\t    background: #fff;\n\t    /*background: #c9e5f5;*/\n\t    -moz-border-radius-topleft: 15px;\n\t    -webkit-border-top-left-radius: 15px;\n\t    border-top-left-radius: 15px;\n\t    -moz-border-radius-topright: 15px;\n\t    -webkit-border-top-right-radius: 15px;\n\t    border-top-right-radius: 15px;\n\t    -webkit-box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    box-shadow: 0 0 0 2px rgba(0,0,0,0.04);\n\t    overflow: hidden;\n}\n.el-dropdown-menu {\n    \tposition: absolute;\n    \ttop: 0;\n    \tleft: 0;\n\t\tmargin: 5px 0;\n    \tpadding: 6px 0;\n    \tmin-width: 100px;\n    \tbackground-color: #fff;\n    \tborder: 1px solid #d3dce6;\n    \tbox-shadow: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.12);\n    \tz-index: 10;\n    \ttransform-origin: center top 0px;\n}\n.el-dropdown-menu__item {\n\t\tlist-style: none;\n    \tline-height: 36px;\n    \tpadding: 0 10px;\n    \tmargin: 0;\n    \tcursor: pointer;\n}\n.el-dropdown-menu__item:hover {\n    \tbackground-color: #e5e9f2;\n    \tcolor: #475669;\n}\n.algorithm > div {\n\t\tfloat: left;\n\t\twidth: 33.333%;\n}\n.checkbox-three {\n\t\t/*display: inline-block;*/\n\t\tfloat: left;\n\t\tposition: relative;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\tline-height: 1;\n\t\tvertical-align: middle;\n}\ninput[name=\"algorithm\"] + label {\n\t\tdisplay: inline-block;\n\t\tposition: absolute;\n\t\ttop: 0;\n\t\tleft: 0;\n\t\tpadding: 9px;\n\t\tborder: 1px solid #c1caca;\n\t\tborder-radius: 1000px;\n\t\tbox-shadow: 0 1px 2px rgba(0, 0, 0, .05), inset 0 -15px 10px -12px rgba(0, 0, 0, .05);\n\t\tbackground-color: #fff;\n}\ninput[name=\"algorithm\"]:checked + label:before {\n\t\tcontent: ' ';\n\t\tposition: absolute;\n\t\ttop: 3px;\n\t\tleft: 3px;\n\t\twidth: 12px;\n\t\theight: 12px;\n\t\tborder-radius: 50%;\n\t\tbackground: #253c4b;\n\t\tbox-shadow: inset 0 15px 23px -10px rgba(187, 230, 240, .3), 0 2px 2px rgba(0, 0, 0, .1);\n\t\topacity: .8;\n}\nh3 {\n\t\ttext-align: center;\n}\nh3 .el-button--warning {\n\t\tfloat: right;\n\t\tcolor: #fff;\n\t\tfont-weight: 900;\n    \tbackground-color: #f7ba2a;\n    \tborder-color: #f7ba2a;\n}\n.time-input {\n\t\tposition: relative;\n\t\t/*margin: 30px auto;*/\n\t\tmargin: 30px 5px;\n\t\twidth: 80%;\n}\n.content .time-input .el-input__inner {\n\t\twidth: 20%;\n\t\tborder-radius: 4px;\n\t    border: 1px solid #c0ccda;\n}\n.time-button {\n\t\tposition: absolute;\n\t\tleft: 18%;\n\t\ttop: 24px;\n}\n.do-wrapper {\n\t\tposition: relative;\n\t\tmargin-top: 100px;\n}\n.do-wrapper .el-button--success {\n\t\tposition: absolute;\n\t\tleft: 50%;\n\t\ttransform: translateX(-50%);\n\t\twidth: 300px;\n\t\t/*height: 100px;*/\n\t\tmargin: 0 auto;\n\t\tcolor: #fff;\n\t\tfont-weight: 900;\n    \tbackground-color: #13ce66;\n    \tborder-color: #13ce66;\n}\n\n", ""]);
 
 	// exports
 
@@ -11917,6 +11917,10 @@ webpackJsonp([0,1],[
 	//
 	//
 	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		created: function created() {
@@ -11938,8 +11942,27 @@ webpackJsonp([0,1],[
 					time: 0, //
 					state: '' //运行状态
 				},
-				dataStruct_Array: [],
-				algorithmType: 0
+				dataStruct_Array: [{
+					name: 'a',
+					right: '5',
+					nTime: 1,
+					rTime: 0,
+					state: '等待中'
+				}, {
+					name: 'b',
+					right: '2',
+					nTime: 2,
+					rTime: 0,
+					state: '等待中'
+				}, {
+					name: 'c',
+					right: '3',
+					nTime: 3,
+					rTime: 0,
+					state: '等待中'
+				}],
+				algorithmType: 0,
+				time: 1
 			};
 		},
 
@@ -11952,16 +11975,29 @@ webpackJsonp([0,1],[
 			testMdl: function testMdl() {
 				alert("!!!!!");
 			},
+			reset: function reset() {
+				this.dataStruct_Array = [];
+			},
 			ChoosetheAlgorithm: function ChoosetheAlgorithm(event) {
 				// console.log(event.currentTarget);
 				console.log(event.target.value);
 				this.algorithmType = event.target.value;
 			},
+			submitTime: function submitTime() {
+				if (this.time === 0) {
+					alert("请输入时间片");
+				} else {
+					alert("时间片已确定");
+				}
+			},
+			joinProcess: function joinProcess(processData) {
+				console.log(processData);
+				this.dataStruct_Array.push(processData);
+			},
 			executeAlgorithm: function executeAlgorithm() {
 
 				switch (this.algorithmType) {
 					case "1":
-						console.log("111");
 						this.StaticPriority();
 						break;
 					case "2":
@@ -11978,16 +12014,89 @@ webpackJsonp([0,1],[
 				}
 			},
 			StaticPriority: function StaticPriority() {
-				alert("StaticPriority");
+
+				if (!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+					console.log(this.dataStruct_Array);
+					this.dataStruct_Array.sort(this.compare('right'));
+					console.log(this.dataStruct_Array);
+					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+				}
 			},
-			DynamicPriority: function DynamicPriority() {
-				alert("DynamicPriority");
-			},
+
+			// DynamicPriority() {
+			// 	alert("DynamicPriority");
+			// },
 			SimplePath: function SimplePath() {
-				alert("SimplePath");
+				// alert("SimplePath");
+
+				if (!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+				}
+			},
+			Core: function Core(n, i) {
+				var start = new Date().getTime();
+
+				// this.dataStruct_Array[i].state = '运行中';
+
+				console.log(this.dataStruct_Array);
+				this.$set(this.dataStruct_Array[i], 'state', '运行中');
+				$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('运行中');
+				alert("时间片执行完毕");
+				// this.dataStruct_Array = [];
+				console.log(this.dataStruct_Array);
+				while (true) {
+					if (new Date().getTime() - start > n) {
+
+						this.dataStruct_Array[i].rTime += this.time;
+						$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataStruct_Array[i].rTime.toString());
+
+						console.log(this.dataStruct_Array[i]);
+
+						if (this.dataStruct_Array[i].rTime == this.dataStruct_Array[i].nTime) {
+							//break
+							this.dataStruct_Array[i].state = '已完成';
+							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('已完成');
+							// this.dataStruct_Array.splice(i, 1);
+							// i ++;
+						} else {
+							i--;
+						}
+						return i;
+					}
+				}
 			},
 			VariableTime: function VariableTime() {
-				alert("VariableTime");
+				// alert("VariableTime");
+				if (!this.dataStruct_Array.length || !this.time) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+				}
+			},
+			compare: function compare(prop) {
+				return function (a, b) {
+					var value1 = a[prop];
+					var value2 = b[prop];
+					return value1 - value2;
+				};
 			}
 		},
 		components: {
@@ -12086,7 +12195,7 @@ webpackJsonp([0,1],[
 /* 36 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -12243,9 +12352,11 @@ webpackJsonp([0,1],[
 	//
 	//
 	//
+	//
+	//
 
 	exports.default = {
-		props: [],
+		props: ['processArray'],
 		mounted: function mounted() {},
 		data: function data() {
 			return {};
@@ -12259,13 +12370,36 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _h('div', {
 	    staticClass: "el-table"
-	  }, [_h('div', {
+	  }, [_vm._m(0), " ", _vm._m(1), " ", _h('div', {
+	    staticClass: "el-table__body-wrapper"
+	  }, [_h('table', {
+	    staticClass: "el-table__body",
+	    attrs: {
+	      "cellspacing": "0",
+	      "cellpadding": "0",
+	      "border": "0"
+	    }
+	  }, [_h('tbody', [_vm._l((_vm.processArray), function(item) {
+	    return _h('tr', [_h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.name)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.right)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.nTime)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.rTime)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.state)])])])
+	  })])])])])
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
 	    staticClass: "hidden-columns"
-	  }, [_h('div'), " ", _h('div'), " ", _h('div')]), " ", _h('div', {
+	  }, [_h('div'), " ", _h('div'), " ", _h('div')])
+	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
 	    staticClass: "el-table__header-wrapper"
 	  }, [_h('table', {
 	    staticClass: "el-table__header",
@@ -12319,26 +12453,7 @@ webpackJsonp([0,1],[
 	    staticStyle: {
 	      "width": "0px"
 	    }
-	  })])])])]), " ", _h('div', {
-	    staticClass: "el-table__body-wrapper"
-	  }, [_h('table', {
-	    staticClass: "el-table__body",
-	    attrs: {
-	      "cellspacing": "0",
-	      "cellpadding": "0",
-	      "border": "0"
-	    }
-	  }, [_h('tbody', [_h('tr', [_h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, ["1"])]), " ", _h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, ["2"])]), " ", _h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, ["12"])]), " ", _h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, ["10"])]), " ", _h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, ["运行中,等待中,运行完毕"])])])])])])])
+	  })])])])])
 	}]}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -12439,7 +12554,7 @@ webpackJsonp([0,1],[
 /* 41 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -12566,7 +12681,35 @@ webpackJsonp([0,1],[
 
 	exports.default = {
 		data: function data() {
-			return {};
+			return {
+				processName: '',
+				right: '',
+				time: ''
+			};
+		},
+
+		methods: {
+			joinProcess: function joinProcess() {
+				if (!this.processName || !this.right || !this.time) {
+					alert("请输入数据!");
+					return;
+				} else {
+					var processData = {
+						name: this.processName,
+						right: this.right,
+						nTime: this.time,
+						rTime: 0,
+						time: 0,
+						state: '等待中'
+					};
+					console.log(processData);
+					this.$emit('join', processData);
+
+					this.processName = '';
+					this.right = '';
+					this.time = '';
+				}
+			}
 		}
 	};
 
@@ -12575,13 +12718,106 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _h('div', {
 	    staticClass: "el-table inputArea"
-	  }, [_h('div', {
+	  }, [_vm._m(0), " ", _vm._m(1), " ", _h('div', {
+	    staticClass: "el-table__body-wrapper inputArea-body"
+	  }, [_h('table', {
+	    staticClass: "el-table__body",
+	    attrs: {
+	      "cellspacing": "0",
+	      "cellpadding": "0",
+	      "border": "0"
+	    }
+	  }, [_h('tbody', [_h('tr', [_h('td', [_h('div', {
+	    staticClass: "cell"
+	  }, [_h('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.processName),
+	      expression: "processName"
+	    }],
+	    staticClass: "el-input__inner",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入内容",
+	      "autocomplete": "off"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.processName)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.processName = $event.target.value
+	      }
+	    }
+	  })])]), " ", _h('td', [_h('div', {
+	    staticClass: "cell"
+	  }, [_h('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.right),
+	      expression: "right"
+	    }],
+	    staticClass: "el-input__inner",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入内容",
+	      "autocomplete": "off"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.right)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.right = $event.target.value
+	      }
+	    }
+	  })])]), " ", _h('td', [_h('div', {
+	    staticClass: "cell"
+	  }, [_h('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.time),
+	      expression: "time"
+	    }],
+	    staticClass: "el-input__inner",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入内容",
+	      "autocomplete": "off"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.time)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.time = $event.target.value
+	      }
+	    }
+	  })])]), " ", _h('td', [_h('div', {
+	    staticClass: "cell"
+	  }, [_h('button', {
+	    staticClass: "el-button el-button--default",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.joinProcess
+	    }
+	  }, [_h('span', ["加入该进程"])])])])])])])])])
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
 	    staticClass: "hidden-columns"
-	  }, [_h('div'), " ", _h('div'), " ", _h('div')]), " ", _h('div', {
+	  }, [_h('div'), " ", _h('div'), " ", _h('div')])
+	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
 	    staticClass: "el-table__header-wrapper inputArea-header"
 	  }, [_h('table', {
 	    staticClass: "el-table__header",
@@ -12627,50 +12863,7 @@ webpackJsonp([0,1],[
 	    staticStyle: {
 	      "width": "0px"
 	    }
-	  })])])])]), " ", _h('div', {
-	    staticClass: "el-table__body-wrapper inputArea-body"
-	  }, [_h('table', {
-	    staticClass: "el-table__body",
-	    attrs: {
-	      "cellspacing": "0",
-	      "cellpadding": "0",
-	      "border": "0"
-	    }
-	  }, [_h('tbody', [_h('tr', [_h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, [_h('input', {
-	    staticClass: "el-input__inner",
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "请输入内容",
-	      "autocomplete": "off"
-	    }
-	  })])]), " ", _h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, [_h('input', {
-	    staticClass: "el-input__inner",
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "请输入内容",
-	      "autocomplete": "off"
-	    }
-	  })])]), " ", _h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, [_h('input', {
-	    staticClass: "el-input__inner",
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "请输入内容",
-	      "autocomplete": "off"
-	    }
-	  })])]), " ", _h('td', [_h('div', {
-	    staticClass: "cell"
-	  }, [_h('button', {
-	    staticClass: "el-button el-button--default",
-	    attrs: {
-	      "type": "button"
-	    }
-	  }, [_h('span', ["加入该进程"])])])])])])])])])
+	  })])])])])
 	}]}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -12691,7 +12884,56 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "content"
-	  }, [_h('LogTable'), " ", _vm._m(0), " ", _h('InputArea'), " ", _vm._m(1), " ", _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
+	  }, [_h('LogTable', {
+	    attrs: {
+	      "processArray": _vm.dataStruct_Array
+	    }
+	  }), " ", _h('h3', ["\n\t\t\t\t[进程控制台]\n\t\t\t\t", _h('button', {
+	    staticClass: "el-button el-button--warning",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.reset
+	    }
+	  }, [_h('span', ["重置"])])]), " ", _h('InputArea', {
+	    on: {
+	      "join": _vm.joinProcess
+	    }
+	  }), " ", _h('div', {
+	    staticClass: "time-input"
+	  }, ["\n\t\t\t\t请输入时间片:\n\t\t\t\t", _h('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.time),
+	      expression: "time"
+	    }],
+	    staticClass: "el-input__inner",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": "请输入内容",
+	      "autocomplete": "off",
+	      "id": "timeInput"
+	    },
+	    domProps: {
+	      "value": _vm._s(_vm.time)
+	    },
+	    on: {
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.time = $event.target.value
+	      }
+	    }
+	  }), " ", _h('button', {
+	    staticClass: "el-button time-button",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.submitTime
+	    }
+	  }, [_h('span', ["确定"])])]), " ", _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
 	    staticClass: "algorithm"
 	  }, [_h('div', [_h('div', {
 	    staticClass: "checkbox-three"
@@ -12713,27 +12955,7 @@ webpackJsonp([0,1],[
 	    attrs: {
 	      "for": "StaticPriority"
 	    }
-	  }, ["静态优先权算法"])])]), " ", _h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "2",
-	      "id": "DynamicPriority",
-	      "name": "algorithm"
-	    },
-	    on: {
-	      "change": _vm.ChoosetheAlgorithm
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "DynamicPriority"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "DynamicPriority"
-	    }
-	  }, ["动态优先权算法"])])]), " ", _h('div', [_h('div', {
+	  }, ["静态优先权算法"])])]), " ", " ", _h('div', [_h('div', {
 	    staticClass: "checkbox-three"
 	  }, [_h('input', {
 	    attrs: {
@@ -12784,31 +13006,7 @@ webpackJsonp([0,1],[
 	      "click": _vm.executeAlgorithm
 	    }
 	  }, [_h('span', ["执行算法"])])])]), " "])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _h('h3', ["\n\t\t\t\t[进程控制台]\n\t\t\t\t", _h('button', {
-	    staticClass: "el-button el-button--warning",
-	    attrs: {
-	      "type": "button"
-	    }
-	  }, [_h('span', ["重置"])])])
-	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _h('div', {
-	    staticClass: "time-input"
-	  }, ["\n\t\t\t\t请输入时间片:\n\t\t\t\t", _h('input', {
-	    staticClass: "el-input__inner",
-	    attrs: {
-	      "type": "text",
-	      "placeholder": "请输入内容",
-	      "autocomplete": "off",
-	      "id": "timeInput"
-	    }
-	  }), " ", _h('button', {
-	    staticClass: "el-button time-button",
-	    attrs: {
-	      "type": "button"
-	    }
-	  }, [_h('span', ["确定"])])])
-	}]}
+	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()

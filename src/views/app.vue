@@ -50,7 +50,7 @@
 	}
 	.algorithm > div {
 		float: left;
-		width: 25%;
+		width: 33.333%;
 	}
 	.checkbox-three {
 		/*display: inline-block;*/
@@ -132,20 +132,24 @@
 <template>
 	<div id="wrapper">
 		<div class="content">
-			<LogTable />
+			<LogTable 
+				:processArray="dataStruct_Array"
+			/>
 			<h3>
 				[进程控制台]
-				<button type="button" class="el-button el-button--warning">
+				<button type="button" class="el-button el-button--warning" @click="reset">
 					<!---->
 					<!---->
 					<span>重置</span>
 				</button>
 			</h3>
-			<InputArea />
+			<InputArea 
+				v-on:join="joinProcess"
+			/>
 			<div class="time-input">
 				请输入时间片:
-				<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" id="timeInput">
-				<button type="button" class="el-button time-button">
+				<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" id="timeInput" v-model="time">
+				<button type="button" class="el-button time-button" @click="submitTime">
             		<!---->
             		<!---->
             		<span>确定</span>
@@ -161,13 +165,13 @@
 							<label for="StaticPriority">静态优先权算法</label>
 						</div>
 				    </div>
-					<div>
+					<!-- <div>
 						<div class="checkbox-three">
 							<input type="radio" value="2" id="DynamicPriority" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
 							<label for="DynamicPriority"></label>
 							<label for="DynamicPriority">动态优先权算法</label>
 						</div>
-					</div>
+					</div> -->
 					<div>
 						<div class="checkbox-three">
 							<input type="radio" value="3" id="SimplePath" name="algorithm"v-on:change="ChoosetheAlgorithm" />
@@ -227,8 +231,30 @@
 					time: 0,	 //
 					state: ''    //运行状态
 				},
-				dataStruct_Array: [],
-				algorithmType: 0
+				dataStruct_Array: [
+				{
+					name: 'a',
+					right: '5',
+					nTime: 1,
+					rTime: 0,
+					state: '等待中'
+				},
+				{
+					name: 'b',
+					right: '2',
+					nTime: 2,
+					rTime: 0,
+					state: '等待中'
+				},
+				{
+					name: 'c',
+					right: '3',
+					nTime: 3,
+					rTime: 0,
+					state: '等待中'
+				}],
+				algorithmType: 0,
+				time: 1
 			}
 		},
 		computed: {
@@ -240,16 +266,29 @@
 			testMdl() {
 				alert("!!!!!");
 			},
+			reset() {
+				this.dataStruct_Array = [];
+			},
 			ChoosetheAlgorithm(event) {
 				// console.log(event.currentTarget);
 				console.log(event.target.value);
 				this.algorithmType = event.target.value;
 			},
+			submitTime() {
+				if(this.time === 0) {
+					alert("请输入时间片");
+				} else {
+					alert("时间片已确定");
+				}
+			},
+			joinProcess(processData) {
+				console.log(processData);
+				this.dataStruct_Array.push(processData);
+			},
 			executeAlgorithm() {
 
 				switch(this.algorithmType){
 					case "1": 
-						console.log("111");
 						this.StaticPriority();
 						break;
 					case "2": 
@@ -266,16 +305,93 @@
 				} 
 			},
 			StaticPriority() {
-				alert("StaticPriority");
+				
+				if(!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+					console.log(this.dataStruct_Array);
+					this.dataStruct_Array.sort(this.compare('right'));
+					console.log(this.dataStruct_Array);
+					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+
+				}
+				
 			}, 
-			DynamicPriority() {
-				alert("DynamicPriority");
-			},
+			// DynamicPriority() {
+			// 	alert("DynamicPriority");
+			// },
 			SimplePath() {
-				alert("SimplePath");
+				// alert("SimplePath");
+
+				if(!this.dataStruct_Array.length) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+
+				}
+
+			},
+			Core(n, i) {
+				var  start = new Date().getTime();   
+
+			    // this.dataStruct_Array[i].state = '运行中';
+
+			    console.log(this.dataStruct_Array);
+			    this.$set(this.dataStruct_Array[i], 'state', '运行中');
+			    $($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('运行中');
+			   	alert("时间片执行完毕");
+			    // this.dataStruct_Array = [];
+			    console.log(this.dataStruct_Array);
+			    while(true) {
+			    	if(new Date().getTime() - start > n) {
+
+						this.dataStruct_Array[i].rTime += this.time;
+			    		$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataStruct_Array[i].rTime.toString());
+
+						console.log(this.dataStruct_Array[i]);
+						
+						if(this.dataStruct_Array[i].rTime == this.dataStruct_Array[i].nTime){
+							//break
+							this.dataStruct_Array[i].state = '已完成';
+							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html('已完成');
+							// this.dataStruct_Array.splice(i, 1);
+							// i ++;
+						} else {
+							i --;
+						}
+			    		return i;	
+			    	} 
+			    }
 			},
 			VariableTime() {
-				alert("VariableTime");
+				// alert("VariableTime");
+				if(!this.dataStruct_Array.length || !this.time) {
+					alert("就绪队列为空");
+					return;
+				} else {
+
+					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+						// alert(index);
+						index = this.Core(this.time * 1000, index);
+					}
+
+				}
+			},
+			compare(prop) {
+				return function(a, b){
+					var value1 = a[prop];
+					var value2 = b[prop];
+					return value1 - value2;
+				}
 			}
 		},
 		components: {

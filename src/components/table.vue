@@ -126,21 +126,23 @@
         <div class="el-table__body-wrapper">
             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body">
                 <tbody>
-                    <tr>
+                    <tr v-for="item in processArray">
+                        
                         <td>
-                            <div class="cell">1</div>
+                            <div class="cell">{{ item.name }}</div>
                         </td>
                         <td>
-                            <div class="cell">2</div>
+                            <div class="cell">{{ item.right }}</div>
                         </td>
                         <td>
-                            <div class="cell">12</div>
+                            <div class="cell">{{ item.nTime }}</div>
                         </td>
                         <td>
-                            <div class="cell">10</div>
+                            <div class="cell">{{ item.rTime }}</div>
                         </td>
                         <td>
-                            <div class="cell">运行中,等待中,运行完毕</div>
+                            <!-- 运行中,等待中,运行完毕 -->
+                            <div class="cell">{{ item.state }}</div>
                         </td>
                     </tr>
                 </tbody>
@@ -152,7 +154,7 @@
 
 <script>
 	export default {
-		props: [],
+		props: ['processArray'],
 		mounted() {
 
 		},
