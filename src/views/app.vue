@@ -135,6 +135,7 @@
 			<LogTable 
 				:processArray="dataStruct_Array"
 			/>
+			<MemoryTable />
 			<h3>
 				[进程控制台]
 				<button type="button" class="el-button el-button--warning" @click="reset">
@@ -200,7 +201,8 @@
 
 <script>
 	import LogTable  	from '../components/table.vue';
-	import InputArea	from '../components/inputArea.vue';	
+	import InputArea	from '../components/inputArea.vue';
+	import MemoryTable  from '../components/memoryTable.vue';	
 
 	export default {
 		created() {
@@ -209,51 +211,30 @@
 		mounted() {
 			// console.log("mounted");
 			// console.log(this.$el);
+			this.initializeArea();
 		},
 		data() {
 			return {
 				message: 'Hello World',
 				count: 0,
-				dataStruct: {
+				processStruct: {
 					name: '',    		//进程名
-					arriveTime: 0,    	//到达时间
 					serveTime: 0,	 	//服务时间
-					rTime: 0,			//已服务时间
-					completeTime: 0,    //完成时间
-					arroundTime: 0,
-					weightTime: 0
-					// state: ''    		//运行状态
+					size: 0,			//空间大小
+					addr: 0,			//zone first address
+					state: ''    		//运行状态
+				},			
+				areaStruct: {
+					name: '',           //分块名称
+					size: 0,			//块空间大小
+					addr: 0,			//首地址
+					state: ''			//状态
 				},
-				dataStruct_Array: [
-				{
-					name: 'a',
-					arriveTime: 0,    	//到达时间
-					serveTime: 2,	 	//服务时间
-					rTime: 0,			//已服务时间
-					completeTime: 0,    //完成时间
-					arroundTime: 0,
-					weightTime: 0
-				},
-				{
-					name: 'b',
-					arriveTime: 1,    	//到达时间
-					serveTime: 1,	 	//服务时间
-					rTime: 0,			//已服务时间
-					completeTime: 0,    //完成时间
-					arroundTime: 0,
-					weightTime: 0
-				},
-				{
-					name: 'c',
-					arriveTime: 2,    	//到达时间
-					serveTime: 3,	 	//服务时间
-					rTime: 0,			//已服务时间
-					completeTime: 0,    //完成时间
-					arroundTime: 0,
-					weightTime: 0
-				}],
-				algorithmType: 0,
-				time: 1
+				dataReady_Array: [],
+				dataAs_Array: [],
+				areaFree_Array: [],
+				areaAs_Array: [],
+				algorithmType: 0
 			}
 		},
 		computed: {
@@ -280,6 +261,32 @@
 			joinProcess(processData) {
 				console.log(processData);
 				this.dataStruct_Array.push(processData);
+			},
+			initializeArea() {
+				var areaA = this.createArea('a', 10, 5);
+				this.dataReady_Array.push(areaA);
+				var areaB = this.createArea('b', 120, 10);
+				this.dataReady_Array.push(areaB);
+				var areaC = this.createArea('c', 40, 160);
+				this.dataReady_Array.push(areaC);
+				var areaD = this.createArea('d', 10, 220);
+				this.dataReady_Array.push(areaD);
+				var areaE = this.createArea('e', 20, 250);
+				this.dataReady_Array.push(areaE);
+				var areaF = this.createArea('f', 80, 330);
+				this.dataReady_Array.push(areaF);
+				console.log(this.dataReady_Array);
+			},
+			createArea(name, size, addr) {
+				
+				var area = {
+					name: name,
+					size: size,
+					addr: addr,
+					state: '未分配'
+				};
+
+				return area;
 			},
 			executeAlgorithm() {
 
@@ -354,7 +361,7 @@
 						// if(this.dataStruct_Array[index].completeTime == 9999) {
 						// 	continue;
 						// } else {
-							
+
 						// }
 							index = this.Core(this.time * 1000, index);
 						// console.log(now);
@@ -444,7 +451,7 @@
 			}
 		},
 		components: {
-			LogTable, InputArea
+			LogTable, InputArea, MemoryTable
 		}
 	}
 </script>

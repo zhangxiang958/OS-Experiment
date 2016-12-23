@@ -11710,208 +11710,11 @@ webpackJsonp([0,1],[
 
 	var _inputArea2 = _interopRequireDefault(_inputArea);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _memoryTable = __webpack_require__(44);
 
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	var _memoryTable2 = _interopRequireDefault(_memoryTable);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
 		created: function created() {
@@ -11920,48 +11723,30 @@ webpackJsonp([0,1],[
 		mounted: function mounted() {
 			// console.log("mounted");
 			// console.log(this.$el);
+			this.initializeArea();
 		},
 		data: function data() {
 			return {
 				message: 'Hello World',
 				count: 0,
-				dataStruct: {
+				processStruct: {
 					name: '', //进程名
-					arriveTime: 0, //到达时间
 					serveTime: 0, //服务时间
-					rTime: 0, //已服务时间
-					completeTime: 0, //完成时间
-					arroundTime: 0,
-					weightTime: 0
-					// state: ''    		//运行状态
+					size: 0, //空间大小
+					addr: 0, //zone first address
+					state: '' //运行状态
 				},
-				dataStruct_Array: [{
-					name: 'a',
-					arriveTime: 0, //到达时间
-					serveTime: 2, //服务时间
-					rTime: 0, //已服务时间
-					completeTime: 0, //完成时间
-					arroundTime: 0,
-					weightTime: 0
-				}, {
-					name: 'b',
-					arriveTime: 1, //到达时间
-					serveTime: 1, //服务时间
-					rTime: 0, //已服务时间
-					completeTime: 0, //完成时间
-					arroundTime: 0,
-					weightTime: 0
-				}, {
-					name: 'c',
-					arriveTime: 2, //到达时间
-					serveTime: 3, //服务时间
-					rTime: 0, //已服务时间
-					completeTime: 0, //完成时间
-					arroundTime: 0,
-					weightTime: 0
-				}],
-				algorithmType: 0,
-				time: 1
+				areaStruct: {
+					name: '', //分块名称
+					size: 0, //块空间大小
+					addr: 0, //首地址
+					state: '' //状态
+				},
+				dataReady_Array: [],
+				dataAs_Array: [],
+				areaFree_Array: [],
+				areaAs_Array: [],
+				algorithmType: 0
 			};
 		},
 
@@ -11990,6 +11775,32 @@ webpackJsonp([0,1],[
 			joinProcess: function joinProcess(processData) {
 				console.log(processData);
 				this.dataStruct_Array.push(processData);
+			},
+			initializeArea: function initializeArea() {
+				var areaA = this.createArea('a', 10, 5);
+				this.dataReady_Array.push(areaA);
+				var areaB = this.createArea('b', 120, 10);
+				this.dataReady_Array.push(areaB);
+				var areaC = this.createArea('c', 40, 160);
+				this.dataReady_Array.push(areaC);
+				var areaD = this.createArea('d', 10, 220);
+				this.dataReady_Array.push(areaD);
+				var areaE = this.createArea('e', 20, 250);
+				this.dataReady_Array.push(areaE);
+				var areaF = this.createArea('f', 80, 330);
+				this.dataReady_Array.push(areaF);
+				console.log(this.dataReady_Array);
+			},
+			createArea: function createArea(name, size, addr) {
+
+				var area = {
+					name: name,
+					size: size,
+					addr: addr,
+					state: '未分配'
+				};
+
+				return area;
 			},
 			executeAlgorithm: function executeAlgorithm() {
 
@@ -12151,9 +11962,209 @@ webpackJsonp([0,1],[
 			}
 		},
 		components: {
-			LogTable: _table2.default, InputArea: _inputArea2.default
+			LogTable: _table2.default, InputArea: _inputArea2.default, MemoryTable: _memoryTable2.default
 		}
-	};
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 33 */
@@ -12972,7 +12983,7 @@ webpackJsonp([0,1],[
 	    attrs: {
 	      "processArray": _vm.dataStruct_Array
 	    }
-	  }), " ", _h('h3', ["\n\t\t\t\t[进程控制台]\n\t\t\t\t", _h('button', {
+	  }), " ", _h('MemoryTable'), " ", _h('h3', ["\n\t\t\t\t[进程控制台]\n\t\t\t\t", _h('button', {
 	    staticClass: "el-button el-button--warning",
 	    attrs: {
 	      "type": "button"
@@ -13063,6 +13074,397 @@ webpackJsonp([0,1],[
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1e259c4f", module.exports)
+	  }
+	}
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+
+	/* styles */
+	__webpack_require__(45)
+
+	/* script */
+	__vue_exports__ = __webpack_require__(47)
+
+	/* template */
+	var __vue_template__ = __webpack_require__(48)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	__vue_options__.__file = "/home/jarvis/Workspace/OS/src/components/memoryTable.vue"
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-e696bdd6", __vue_options__)
+	  } else {
+	    hotAPI.reload("data-v-e696bdd6", __vue_options__)
+	  }
+	})()}
+	if (__vue_options__.functional) {console.error("[vue-loader] memoryTable.vue: functional components are not supported and should be defined in plain js files using render functions.")}
+
+	module.exports = __vue_exports__
+
+
+/***/ },
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(46);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(31)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e696bdd6!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./memoryTable.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-e696bdd6!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./memoryTable.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(30)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.el-table {\n        position: relative;\n        border-right: 0;\n        border-bottom: 0;\n        width: 100%;\n        overflow: hidden;\n        box-sizing: border-box;\n        width: 100%;\n        max-width: 100%;\n        background-color: #fff;\n        border: 1px solid #e0e6ed;\n        font-size: 14px;\n        color: #1f2d3d;\n}\n.el-table:before {\n        content: '';\n        position: absolute;\n        background-color: #e0e6ed;\n        z-index: 1;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        height: 1px;\n}\n.el-table .hidden-columns {\n        visibility: hidden;\n        position: absolute;\n        z-index: -1;\n}\n.el-table__header-wrapper {\n        width: 100%;\n        overflow: hidden;\n}\n.el-table__header, .el-table__body {\n        table-layout: fixed;\n        width: 100%;\n}\n.el-table th {\n        position: relative;\n        box-sizing: border-box;\n        min-width: 0;\n        height: 40px;\n        border-right: 1px solid #e0e6ed;\n        background-color: #eff2f7;\n        text-align: left;\n        text-overflow: ellipsis;\n        vertical-align: middle;\n        white-space: nowrap;\n        overflow: hidden;\n}\n.el-table td {\n        position: relative;\n        box-sizing: border-box;\n        height: 40px;\n        min-width: 0;\n        border-bottom: 1px solid #e0e6ed;\n        border-right: 1px solid #e0e6ed;\n        text-overflow: ellipsis;\n        vertical-align: middle;\n}\n.el-table th.isleaf {\n        border-bottom: 1px solid #e0e6ed;\n}\n.el-table .cell {\n        box-sizing: border-box;\n        padding-left: 18px;\n        padding-right: 18px;\n        line-height: 24px;\n        text-overflow: ellipsis;\n        white-space: normal;\n        word-break: break-all;\n        overflow: hidden;\n}\n.el-table th > .cell {\n        position: relative;\n        box-sizing: border-box;\n        display: inline-block;\n        width: 100%;\n        line-height: 20px;\n        vertical-align: middle;\n        text-overflow: ellipsis;\n        word-wrap: normal;\n}\n.el-table__body-wrapper {\n        position: relative;\n        width: 100%;\n        height: 300px;\n        overflow: auto;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	exports.default = {
+		props: ['processArray'],
+		mounted: function mounted() {},
+		data: function data() {
+			return {};
+		},
+
+		methods: {}
+	};
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
+	    staticClass: "el-table"
+	  }, [_vm._m(0), " ", _vm._m(1), " ", _h('div', {
+	    staticClass: "el-table__body-wrapper"
+	  }, [_h('table', {
+	    staticClass: "el-table__body",
+	    attrs: {
+	      "cellspacing": "0",
+	      "cellpadding": "0",
+	      "border": "0"
+	    }
+	  }, [_h('tbody', [_vm._l((_vm.processArray), function(item) {
+	    return _h('tr', [_h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.name)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.arriveTime)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.serveTime)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.completeTime)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.arroundTime)])]), " ", _h('td', [_h('div', {
+	      staticClass: "cell"
+	    }, [_vm._s(item.weightTime)])])])
+	  })])])])])
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
+	    staticClass: "hidden-columns"
+	  }, [_h('div'), " ", _h('div'), " ", _h('div')])
+	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
+	    staticClass: "el-table__header-wrapper"
+	  }, [_h('table', {
+	    staticClass: "el-table__header",
+	    attrs: {
+	      "cellspacing": "0",
+	      "cellpadding": "0",
+	      "border": "0"
+	    }
+	  }, [_h('thead', [_h('tr', [_h('th', {
+	    staticClass: "is-leaf",
+	    attrs: {
+	      "colspan": "1",
+	      "rowspan": "1"
+	    }
+	  }, [_h('div', {
+	    staticClass: "cell"
+	  }, ["作业名"])]), " ", _h('th', {
+	    staticClass: "is-leaf",
+	    attrs: {
+	      "colspan": "1",
+	      "rowspan": "1"
+	    }
+	  }, [_h('div', {
+	    staticClass: "cell"
+	  }, ["到达时间"])]), " ", _h('th', {
+	    staticClass: "is-leaf",
+	    attrs: {
+	      "colspan": "1",
+	      "rowspan": "1"
+	    }
+	  }, [_h('div', {
+	    staticClass: "cell"
+	  }, ["服务时间"])]), " ", _h('th', {
+	    staticClass: "is-leaf",
+	    attrs: {
+	      "colspan": "1",
+	      "rowspan": "1"
+	    }
+	  }, [_h('div', {
+	    staticClass: "cell"
+	  }, ["完成时间"])]), " ", _h('th', {
+	    staticClass: "is-leaf",
+	    attrs: {
+	      "colspan": "1",
+	      "rowspan": "1"
+	    }
+	  }, [_h('div', {
+	    staticClass: "cell"
+	  }, ["周转时间"])]), " ", _h('th', {
+	    staticClass: "is-leaf",
+	    attrs: {
+	      "colspan": "1",
+	      "rowspan": "1"
+	    }
+	  }, [_h('div', {
+	    staticClass: "cell"
+	  }, ["带权周转时间"])]), " ", _h('th', {
+	    staticClass: "gutter",
+	    staticStyle: {
+	      "width": "0px"
+	    }
+	  })])])])])
+	}]}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-e696bdd6", module.exports)
 	  }
 	}
 
