@@ -69,10 +69,10 @@
                             <div class="cell">作业名</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">到达时间</div>
+                            <div class="cell">需要容量</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
-                            <div class="cell">服务时间</div>
+                            <div class="cell">需要使用时间</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell"></div>
@@ -93,7 +93,7 @@
                         </td>
                         <td>
                             <div class="cell">
-                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="arriveTime">
+                            	<input type="text" placeholder="请输入内容" autocomplete="off" class="el-input__inner" v-model="size">
                             </div>
                         </td>
                         <td>
@@ -122,30 +122,28 @@
 		data() {
 			return {
 				processName: '',
-				arriveTime: '',
+				size: '',
 				serveTime: ''
 			}
 		},
 		methods: {
 			joinProcess() {
-				if(!this.processName || !this.arriveTime || !this.serveTime) {
+				if(!this.processName || !this.size || !this.serveTime) {
 					alert("请输入数据!");
 					return;
 				} else {
 					var processData = {
-						name: this.processName,
-						arriveTime: parseInt(this.arriveTime),
-						serveTime: parseInt(this.serveTime),
-						rTime: 0, 
-						completeTime: 0,
-						arroundTime: 0,
-						weightTime: 0
+						name: this.processName,    		//进程名
+						serveTime: parseInt(this.serveTime),	 	//服务时间
+						size: parseInt(this.size),			//空间大小
+						addr: 0,			//zone first address
+						state: '未分配'    		//运行状态
 					};
 					console.log(processData);
 					this.$emit('join', processData);
 
 					this.processName = '';
-					this.arriveTime = '';
+					this.size = '';
 					this.serveTime = '';
 				}
 				

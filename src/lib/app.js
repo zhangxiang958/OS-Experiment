@@ -11341,7 +11341,7 @@ webpackJsonp([0,1],[
 	__vue_exports__ = __webpack_require__(32)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(43)
+	var __vue_template__ = __webpack_require__(48)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -11710,7 +11710,7 @@ webpackJsonp([0,1],[
 
 	var _inputArea2 = _interopRequireDefault(_inputArea);
 
-	var _memoryTable = __webpack_require__(44);
+	var _memoryTable = __webpack_require__(43);
 
 	var _memoryTable2 = _interopRequireDefault(_memoryTable);
 
@@ -11742,10 +11742,35 @@ webpackJsonp([0,1],[
 					addr: 0, //首地址
 					state: '' //状态
 				},
-				dataReady_Array: [],
+				dataReady_Array: [{
+					name: 'job1',
+					serveTime: 8,
+					size: 6,
+					addr: 0,
+					state: '未分配'
+				}, {
+					name: 'job2',
+					serveTime: 5,
+					size: 100,
+					addr: 0,
+					state: '未分配'
+				}, {
+					name: 'job3',
+					serveTime: 12,
+					size: 40,
+					addr: 0,
+					state: '未分配'
+				}, {
+					name: 'job4',
+					serveTime: 10,
+					size: 70,
+					addr: 0,
+					state: '未分配'
+				}],
 				dataAs_Array: [],
 				areaFree_Array: [],
 				areaAs_Array: [],
+				area_Array: [],
 				algorithmType: 0
 			};
 		},
@@ -11757,39 +11782,68 @@ webpackJsonp([0,1],[
 		},
 		methods: {
 			reset: function reset() {
-				this.dataStruct_Array = [];
+
+				for (var i = 0; i < this.dataReady_Array.length; i++) {
+					var addr = this.dataReady_Array[i].addr;
+
+					for (var j = 0; j < this.area_Array.length; j++) {
+						if (addr == this.area_Array[j].addr) {
+							if (j == 0) {
+								for (var k = 0; k < this.areaFree_Array.length; k++) {
+									if (this.areaFree_Array[k] == this.area_Array[1]) {
+										alert("回收两块(No.0,1)空间");
+										var zoom = this.area_Array[0].size + this.area_Array[1].size;
+										alert("大小为" + zoom);
+									} else {
+										alert("回收1块(No.0)空间");
+										var zoom = this.area_Array[0].size;
+										alert("大小为" + zoom);
+									}
+								}
+							} else if (j == this.area_Array.length - 1) {
+
+								for (var k = 0; k < this.areaFree_Array.length; k++) {
+									if (this.areaFree_Array[k] == this.area_Array[j - 1]) {
+										alert("回收两块(Nolast.0,1)空间");
+										var zoom = this.area_Array[j].size + this.area_Array[j - 1].size;
+										alert("大小为" + zoom);
+									} else {
+										alert("回收1块(Nolast.0)空间");
+										var zoom = this.area_Array[j].size;
+										alert("大小为" + zoom);
+									}
+								}
+							} else {
+
+								for (var k = 0; k < this.areaFree_Array.length; k++) {
+									var zoom = 0;
+
+									if (this.areaFree_Array[k] == this.area_Array[j - 1]) {
+										// alert("回收两块(Nolast.0,1)空间");
+										zoom += this.area_Array[j - 1].size;
+									} else if (this.areaFree_Array[k] == this.area_Array[j + 1]) {
+										zoom += this.area_Array[j + 1].size;
+									} else {
+										alert("回收1块空间");
+										zoom += this.area_Array[j].size;
+									}
+								}
+								alert("回收空间完成");
+								alert("大小为" + zoom);
+							}
+						}
+					}
+				}
+				this.areaFree_Array = this.area_Array;
 			},
 			ChoosetheAlgorithm: function ChoosetheAlgorithm(event) {
 				// console.log(event.currentTarget);
 				console.log(event.target.value);
 				this.algorithmType = event.target.value;
 			},
-
-			// submitTime() {
-			// 	if(this.time === 0) {
-			// 		alert("请输入时间片");
-			// 	} else {
-			// 		alert("时间片已确定");
-			// 	}
-			// },
 			joinProcess: function joinProcess(processData) {
 				console.log(processData);
-				this.dataStruct_Array.push(processData);
-			},
-			initializeArea: function initializeArea() {
-				var areaA = this.createArea('a', 10, 5);
-				this.dataReady_Array.push(areaA);
-				var areaB = this.createArea('b', 120, 10);
-				this.dataReady_Array.push(areaB);
-				var areaC = this.createArea('c', 40, 160);
-				this.dataReady_Array.push(areaC);
-				var areaD = this.createArea('d', 10, 220);
-				this.dataReady_Array.push(areaD);
-				var areaE = this.createArea('e', 20, 250);
-				this.dataReady_Array.push(areaE);
-				var areaF = this.createArea('f', 80, 330);
-				this.dataReady_Array.push(areaF);
-				console.log(this.dataReady_Array);
+				this.dataReady_Array.push(processData);
 			},
 			createArea: function createArea(name, size, addr) {
 
@@ -11802,90 +11856,91 @@ webpackJsonp([0,1],[
 
 				return area;
 			},
+			initializeArea: function initializeArea() {
+				var areaA = this.createArea('a', 10, 5);
+				this.area_Array.push(areaA);
+				this.areaFree_Array.push(areaA);
+				var areaB = this.createArea('b', 120, 10);
+				this.area_Array.push(areaB);
+				this.areaFree_Array.push(areaB);
+				var areaC = this.createArea('c', 40, 160);
+				this.area_Array.push(areaC);
+				this.areaFree_Array.push(areaC);
+				var areaD = this.createArea('d', 10, 220);
+				this.area_Array.push(areaD);
+				this.areaFree_Array.push(areaD);
+				var areaE = this.createArea('e', 20, 250);
+				this.area_Array.push(areaE);
+				this.areaFree_Array.push(areaE);
+				var areaF = this.createArea('f', 80, 330);
+				this.area_Array.push(areaF);
+				this.areaFree_Array.push(areaF);
+
+				console.log(this.area_Array);
+				// this.areaFree_Array = this.area_Array;
+			},
 			executeAlgorithm: function executeAlgorithm() {
 
 				switch (this.algorithmType) {
 					case "1":
-						this.FCFS();
+						this.FIRST();
 						break;
 					case "2":
-						this.SJF();
+						this.BEST();
 						break;
 					case "3":
-						this.HRN();
+						this.WHILEFIRST();
 						break;
 					default:
 						alert("请先选择算法");
 				}
 			},
-			FCFS: function FCFS() {
-				alert("执行FSFC算法");
+			FIRST: function FIRST() {
+				alert("执行首次适应算法");
 
-				if (!this.dataStruct_Array.length) {
-
+				if (!this.dataReady_Array.length) {
 					alert("就绪队列为空");
 					return;
 				} else {
-
-					this.dataStruct_Array.sort(this.compare('arriveTime'));
-					console.log(this.dataStruct_Array);
-
-					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+					console.log(this.dataReady_Array);
+					this.dataReady_Array.sort(this.compare());
+					alert("作业排序完成!");
+					for (var index = 0; index < this.dataReady_Array.length; index++) {
 						// alert(index);
-						index = this.Core(this.time * 1000, index);
+						this.Core(1 * 1000, index);
 					}
 				}
 			},
-			SJF: function SJF() {
-				alert("执行SJF算法");
+			BEST: function BEST() {
+				alert("执行最佳适应算法");
 
-				if (!this.dataStruct_Array.length) {
-
+				if (!this.dataReady_Array.length) {
 					alert("就绪队列为空");
 					return;
 				} else {
-
-					this.dataStruct_Array.sort(this.compare('arriveTime'));
-					console.log(this.dataStruct_Array);
-					alert("就绪队列排列完成");
-					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+					console.log(this.dataReady_Array);
+					this.dataReady_Array.sort(this.compare());
+					alert("作业排序完成!");
+					for (var index = 0; index < this.dataReady_Array.length; index++) {
 						// alert(index);
-						index = this.Core(this.time * 1000, index);
+						this.Core(1 * 1000, index);
 					}
 				}
+				console.log(this.area_Array);
 			},
-			HRN: function HRN() {
-				alert("执行HRN算法");
-				var temp = [];
-				var now = 0;
+			WHILEFIRST: function WHILEFIRST() {
+				alert("执行循环首次适应算法");
 
-				if (!this.dataStruct_Array.length) {
-
+				if (!this.dataReady_Array.length) {
 					alert("就绪队列为空");
 					return;
 				} else {
-					this.dataStruct_Array.sort(this.compare('arriveTime'));
-					console.log(this.dataStruct_Array);
-					alert("就绪队列排列完成");
-
-					for (var index = 0; index < this.dataStruct_Array.length; index++) {
+					console.log(this.dataReady_Array);
+					this.dataReady_Array.sort(this.compare());
+					alert("作业排序完成!");
+					for (var index = 0; index < this.dataReady_Array.length; index++) {
 						// alert(index);
-						// if(this.dataStruct_Array[index].completeTime == 9999) {
-						// 	continue;
-						// } else {
-
-						// }
-						index = this.Core(this.time * 1000, index);
-						// console.log(now);
-						// if(this.dataStruct_Array[index].completeTime) {
-						// 	temp.push(this.dataStruct_Array[index]);
-						// 	now += complete;
-						// 	console.log(now);
-						// 	// for(var k = 0; k < this.dataStruct_Array.length; i ++) {
-						// 	// 	this.dataStruct_Array[index].right = this.computerRight(now, this.dataStruct_Array[index].arriveTime, this.dataStruct_Array[index].serveTime);
-						// 	// }
-						// 	// this.dataStruct_Array.splice(index, 1);
-						// }
+						this.worstCore(1 * 1000, index);
 					}
 				}
 			},
@@ -11894,33 +11949,67 @@ webpackJsonp([0,1],[
 
 				// this.dataStruct_Array[i].state = '运行中';
 
+				console.log(this.dataReady_Array);
+
 				while (true) {
 					if (new Date().getTime() - start > n) {
 
-						this.dataStruct_Array[i].rTime += this.time;
+						// this.dataReady_Array[i].rTime += this.time;
+						// $($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataReady_Array[i].rTime.toString());
 
-						console.log(this.dataStruct_Array[i]);
+						console.log(this.dataReady_Array[i]);
 
-						if (this.dataStruct_Array[i].rTime == this.dataStruct_Array[i].serveTime) {
-							//break
-							var complete = 0;
-							for (var j = 0; j <= i; j++) {
+						for (var j = 0; j < this.areaFree_Array.length; j++) {
+							if (this.areaFree_Array[j].size >= this.dataReady_Array[i].size) {
 
-								complete += this.dataStruct_Array[j].serveTime;
+								this.dataReady_Array[i].state = '已分配';
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html('已分配');
+
+								this.dataReady_Array[i].addr = this.areaFree_Array[j].addr;
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[2]).html(this.areaFree_Array[j].addr);
+
+								// this.area_Array[j].state = '已分配';
+								this.areaAs_Array.push(this.areaFree_Array[j]);
+								this.areaFree_Array.splice(j, 1);
+								alert("分配完成");
+								break;
 							}
-
-							this.dataStruct_Array[i].completeTime = complete;
-							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(complete);
-							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html(this.dataStruct_Array[i].completeTime - this.dataStruct_Array[i].arriveTime);
-							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[5]).html((this.dataStruct_Array[i].completeTime - this.dataStruct_Array[i].arriveTime) / this.dataStruct_Array[i].serveTime);
-							// this.dataStruct_Array.splice(i, 1);
-							// i ++;
-
-							alert("作业" + this.dataStruct_Array[i].name + "调度完毕");
-						} else {
-							i--;
 						}
-						return i;
+
+						// alert("没有合适的分区");
+						break;
+					}
+				}
+			},
+			worstCore: function worstCore(n, i) {
+				var start = new Date().getTime();
+
+				// this.dataStruct_Array[i].state = '运行中';
+
+				console.log(this.dataReady_Array);
+				var temp = [];
+
+				while (true) {
+					if (new Date().getTime() - start > n) {
+
+						// this.dataReady_Array[i].rTime += this.time;
+						// $($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataReady_Array[i].rTime.toString());
+
+						console.log(this.dataReady_Array[i]);
+
+						for (var j = i; j < this.areaFree_Array.length; j++) {
+							if (this.areaFree_Array[j].size >= this.dataReady_Array[i].size) {
+								this.dataReady_Array[i].state = '已分配';
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html('已分配');
+								this.dataReady_Array[i].addr = this.areaFree_Array[j].addr;
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[2]).html(this.areaFree_Array[j].addr);
+								alert("分配完成");
+								break;
+							}
+						}
+
+						alert("没有合适的分区");
+						break;
 					}
 				}
 			},
@@ -11928,43 +12017,16 @@ webpackJsonp([0,1],[
 				return function (a, b) {
 					var value1 = a[prop];
 					var value2 = b[prop];
-					if (value1 == value2) {
-						return a['serveTime'] - b['serveTime'];
-					} else {
-						return value1 - value2;
-					}
+					return value1 - value2;
 				};
-			},
-			compareHRN: function compareHRN(prop, wait) {
-				return function (a, b) {
-					var value1 = a[prop];
-					var value2 = b[prop];
-					return 1 + wait / value1 - (1 + wait / value2);
-				};
-			},
-			computerRight: function computerRight(now) {
-				var index = 0;
-				var temp = this.dataStruct_Array[0];
-				for (var i = 0; i < this.dataStruct_Array.length; i++) {
-					this.dataStruct_Array[i].right = now - this.dataStruct_Array[i].arriveTime + this.dataStruct_Array[i].serveTime;
-					if (this.dataStruct_Array[i].completeTime) {
-						this.dataStruct_Array[i].right = 9999;
-					}
-				}
-				for (var i = 0; i < this.dataStruct_Array.length; i++) {
-
-					if (temp.right > this.dataStruct_Array[i].right) {
-						temp = this.dataStruct_Array[i];
-						index = i;
-					}
-				}
-				return i;
 			}
 		},
 		components: {
 			LogTable: _table2.default, InputArea: _inputArea2.default, MemoryTable: _memoryTable2.default
 		}
 	}; //
+	//
+	//
 	//
 	//
 	//
@@ -12438,6 +12500,20 @@ webpackJsonp([0,1],[
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		props: ['processArray'],
@@ -12470,15 +12546,11 @@ webpackJsonp([0,1],[
 	      staticClass: "cell"
 	    }, [_vm._s(item.name)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.arriveTime)])]), " ", _h('td', [_h('div', {
+	    }, [_vm._s(item.size)])]), " ", " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.serveTime)])]), " ", _h('td', [_h('div', {
+	    }, [_vm._s(item.addr)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.completeTime)])]), " ", _h('td', [_h('div', {
-	      staticClass: "cell"
-	    }, [_vm._s(item.arroundTime)])]), " ", _h('td', [_h('div', {
-	      staticClass: "cell"
-	    }, [_vm._s(item.weightTime)])])])
+	    }, [_vm._s(item.state)])])])
 	  })])])])])
 	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _h('div', {
@@ -12510,7 +12582,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["到达时间"])]), " ", _h('th', {
+	  }, ["需要容量"])]), " ", " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12518,7 +12590,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["服务时间"])]), " ", _h('th', {
+	  }, ["分配首地址"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12526,23 +12598,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["完成时间"])]), " ", _h('th', {
-	    staticClass: "is-leaf",
-	    attrs: {
-	      "colspan": "1",
-	      "rowspan": "1"
-	    }
-	  }, [_h('div', {
-	    staticClass: "cell"
-	  }, ["周转时间"])]), " ", _h('th', {
-	    staticClass: "is-leaf",
-	    attrs: {
-	      "colspan": "1",
-	      "rowspan": "1"
-	    }
-	  }, [_h('div', {
-	    staticClass: "cell"
-	  }, ["带权周转时间"])]), " ", _h('th', {
+	  }, ["作业状态"])]), " ", _h('th', {
 	    staticClass: "gutter",
 	    staticStyle: {
 	      "width": "0px"
@@ -12777,31 +12833,29 @@ webpackJsonp([0,1],[
 		data: function data() {
 			return {
 				processName: '',
-				arriveTime: '',
+				size: '',
 				serveTime: ''
 			};
 		},
 
 		methods: {
 			joinProcess: function joinProcess() {
-				if (!this.processName || !this.arriveTime || !this.serveTime) {
+				if (!this.processName || !this.size || !this.serveTime) {
 					alert("请输入数据!");
 					return;
 				} else {
 					var processData = {
-						name: this.processName,
-						arriveTime: parseInt(this.arriveTime),
-						serveTime: parseInt(this.serveTime),
-						rTime: 0,
-						completeTime: 0,
-						arroundTime: 0,
-						weightTime: 0
+						name: this.processName, //进程名
+						serveTime: parseInt(this.serveTime), //服务时间
+						size: parseInt(this.size), //空间大小
+						addr: 0, //zone first address
+						state: '未分配' //运行状态
 					};
 					console.log(processData);
 					this.$emit('join', processData);
 
 					this.processName = '';
-					this.arriveTime = '';
+					this.size = '';
 					this.serveTime = '';
 				}
 			}
@@ -12854,8 +12908,8 @@ webpackJsonp([0,1],[
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.arriveTime),
-	      expression: "arriveTime"
+	      value: (_vm.size),
+	      expression: "size"
 	    }],
 	    staticClass: "el-input__inner",
 	    attrs: {
@@ -12864,12 +12918,12 @@ webpackJsonp([0,1],[
 	      "autocomplete": "off"
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.arriveTime)
+	      "value": _vm._s(_vm.size)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.arriveTime = $event.target.value
+	        _vm.size = $event.target.value
 	      }
 	    }
 	  })])]), " ", _h('td', [_h('div', {
@@ -12937,7 +12991,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["到达时间"])]), " ", _h('th', {
+	  }, ["需要容量"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12945,7 +12999,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["服务时间"])]), " ", _h('th', {
+	  }, ["需要使用时间"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -12972,126 +13026,17 @@ webpackJsonp([0,1],[
 /* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
-	  return _h('div', {
-	    attrs: {
-	      "id": "wrapper"
-	    }
-	  }, [_h('div', {
-	    staticClass: "content"
-	  }, [_h('LogTable', {
-	    attrs: {
-	      "processArray": _vm.dataStruct_Array
-	    }
-	  }), " ", _h('MemoryTable'), " ", _h('h3', ["\n\t\t\t\t[进程控制台]\n\t\t\t\t", _h('button', {
-	    staticClass: "el-button el-button--warning",
-	    attrs: {
-	      "type": "button"
-	    },
-	    on: {
-	      "click": _vm.reset
-	    }
-	  }, [_h('span', ["重置"])])]), " ", _h('InputArea', {
-	    on: {
-	      "join": _vm.joinProcess
-	    }
-	  }), " ", " ", _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
-	    staticClass: "algorithm"
-	  }, [_h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "1",
-	      "id": "FCFS",
-	      "name": "algorithm"
-	    },
-	    on: {
-	      "change": _vm.ChoosetheAlgorithm
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "FCFS"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "FCFS"
-	    }
-	  }, ["先来先服务调度算法"])])]), " ", _h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "2",
-	      "id": "SJF",
-	      "name": "algorithm"
-	    },
-	    on: {
-	      "change": _vm.ChoosetheAlgorithm
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "SJF"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "SJF"
-	    }
-	  }, ["SJF调度算法"])])]), " ", _h('div', [_h('div', {
-	    staticClass: "checkbox-three"
-	  }, [_h('input', {
-	    attrs: {
-	      "type": "radio",
-	      "value": "3",
-	      "id": "VariableTime",
-	      "name": "algorithm"
-	    },
-	    on: {
-	      "change": _vm.ChoosetheAlgorithm
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "VariableTime"
-	    }
-	  }), " ", _h('label', {
-	    attrs: {
-	      "for": "VariableTime"
-	    }
-	  }, ["响应比高优先HRN调度算法"])])])])]), " ", _h('div', {
-	    staticClass: "do-wrapper"
-	  }, [_h('button', {
-	    staticClass: "el-button el-button--success",
-	    attrs: {
-	      "type": "button"
-	    },
-	    on: {
-	      "click": _vm.executeAlgorithm
-	    }
-	  }, [_h('span', ["执行算法"])])])]), " "])
-	},staticRenderFns: []}
-	module.exports.render._withStripped = true
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1e259c4f", module.exports)
-	  }
-	}
-
-/***/ },
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 
 	/* styles */
-	__webpack_require__(45)
+	__webpack_require__(44)
 
 	/* script */
-	__vue_exports__ = __webpack_require__(47)
+	__vue_exports__ = __webpack_require__(46)
 
 	/* template */
-	var __vue_template__ = __webpack_require__(48)
+	var __vue_template__ = __webpack_require__(47)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -13125,13 +13070,13 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 45 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(46);
+	var content = __webpack_require__(45);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(31)(content, {});
@@ -13151,7 +13096,7 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 46 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(30)();
@@ -13159,13 +13104,13 @@ webpackJsonp([0,1],[
 
 
 	// module
-	exports.push([module.id, "\n.el-table {\n        position: relative;\n        border-right: 0;\n        border-bottom: 0;\n        width: 100%;\n        overflow: hidden;\n        box-sizing: border-box;\n        width: 100%;\n        max-width: 100%;\n        background-color: #fff;\n        border: 1px solid #e0e6ed;\n        font-size: 14px;\n        color: #1f2d3d;\n}\n.el-table:before {\n        content: '';\n        position: absolute;\n        background-color: #e0e6ed;\n        z-index: 1;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        height: 1px;\n}\n.el-table .hidden-columns {\n        visibility: hidden;\n        position: absolute;\n        z-index: -1;\n}\n.el-table__header-wrapper {\n        width: 100%;\n        overflow: hidden;\n}\n.el-table__header, .el-table__body {\n        table-layout: fixed;\n        width: 100%;\n}\n.el-table th {\n        position: relative;\n        box-sizing: border-box;\n        min-width: 0;\n        height: 40px;\n        border-right: 1px solid #e0e6ed;\n        background-color: #eff2f7;\n        text-align: left;\n        text-overflow: ellipsis;\n        vertical-align: middle;\n        white-space: nowrap;\n        overflow: hidden;\n}\n.el-table td {\n        position: relative;\n        box-sizing: border-box;\n        height: 40px;\n        min-width: 0;\n        border-bottom: 1px solid #e0e6ed;\n        border-right: 1px solid #e0e6ed;\n        text-overflow: ellipsis;\n        vertical-align: middle;\n}\n.el-table th.isleaf {\n        border-bottom: 1px solid #e0e6ed;\n}\n.el-table .cell {\n        box-sizing: border-box;\n        padding-left: 18px;\n        padding-right: 18px;\n        line-height: 24px;\n        text-overflow: ellipsis;\n        white-space: normal;\n        word-break: break-all;\n        overflow: hidden;\n}\n.el-table th > .cell {\n        position: relative;\n        box-sizing: border-box;\n        display: inline-block;\n        width: 100%;\n        line-height: 20px;\n        vertical-align: middle;\n        text-overflow: ellipsis;\n        word-wrap: normal;\n}\n.el-table__body-wrapper {\n        position: relative;\n        width: 100%;\n        height: 300px;\n        overflow: auto;\n}\n", ""]);
+	exports.push([module.id, "\n.el-table {\n        position: relative;\n        border-right: 0;\n        border-bottom: 0;\n        width: 100%;\n        overflow: hidden;\n        box-sizing: border-box;\n        width: 100%;\n        max-width: 100%;\n        background-color: #fff;\n        border: 1px solid #e0e6ed;\n        font-size: 14px;\n        color: #1f2d3d;\n}\n.el-table:before {\n        content: '';\n        position: absolute;\n        background-color: #e0e6ed;\n        z-index: 1;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        height: 1px;\n}\n.el-table .hidden-columns {\n        visibility: hidden;\n        position: absolute;\n        z-index: -1;\n}\n.el-table__header-wrapper {\n        width: 100%;\n        overflow: hidden;\n}\n.el-table__header, .el-table__body {\n        table-layout: fixed;\n        width: 100%;\n}\n.el-table th {\n        position: relative;\n        box-sizing: border-box;\n        min-width: 0;\n        height: 40px;\n        border-right: 1px solid #e0e6ed;\n        background-color: #eff2f7;\n        text-align: left;\n        text-overflow: ellipsis;\n        vertical-align: middle;\n        white-space: nowrap;\n        overflow: hidden;\n}\n.el-table td {\n        position: relative;\n        box-sizing: border-box;\n        height: 40px;\n        min-width: 0;\n        border-bottom: 1px solid #e0e6ed;\n        border-right: 1px solid #e0e6ed;\n        text-overflow: ellipsis;\n        vertical-align: middle;\n}\n.el-table th.isleaf {\n        border-bottom: 1px solid #e0e6ed;\n}\n.el-table .cell {\n        box-sizing: border-box;\n        padding-left: 18px;\n        padding-right: 18px;\n        line-height: 24px;\n        text-overflow: ellipsis;\n        white-space: normal;\n        word-break: break-all;\n        overflow: hidden;\n}\n.el-table th > .cell {\n        position: relative;\n        box-sizing: border-box;\n        display: inline-block;\n        width: 100%;\n        line-height: 20px;\n        vertical-align: middle;\n        text-overflow: ellipsis;\n        word-wrap: normal;\n}\n.el-table__body-wrapper {\n        position: relative;\n        width: 100%;\n        /*height: 300px;*/\n        height: 240px;\n        overflow: auto;\n}\n.areaBody {\n        height: 240px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 47 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -13349,9 +13294,21 @@ webpackJsonp([0,1],[
 	//
 	//
 	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
-		props: ['processArray'],
+		props: ['areaArray'],
 		mounted: function mounted() {},
 		data: function data() {
 			return {};
@@ -13361,14 +13318,14 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 48 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _h('div', {
 	    staticClass: "el-table"
 	  }, [_vm._m(0), " ", _vm._m(1), " ", _h('div', {
-	    staticClass: "el-table__body-wrapper"
+	    staticClass: "el-table__body-wrapper areaBody"
 	  }, [_h('table', {
 	    staticClass: "el-table__body",
 	    attrs: {
@@ -13376,20 +13333,16 @@ webpackJsonp([0,1],[
 	      "cellpadding": "0",
 	      "border": "0"
 	    }
-	  }, [_h('tbody', [_vm._l((_vm.processArray), function(item) {
+	  }, [_h('tbody', [_vm._l((_vm.areaArray), function(item) {
 	    return _h('tr', [_h('td', [_h('div', {
 	      staticClass: "cell"
 	    }, [_vm._s(item.name)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.arriveTime)])]), " ", _h('td', [_h('div', {
+	    }, [_vm._s(item.addr)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.serveTime)])]), " ", _h('td', [_h('div', {
+	    }, [_vm._s(item.size)])]), " ", _h('td', [_h('div', {
 	      staticClass: "cell"
-	    }, [_vm._s(item.completeTime)])]), " ", _h('td', [_h('div', {
-	      staticClass: "cell"
-	    }, [_vm._s(item.arroundTime)])]), " ", _h('td', [_h('div', {
-	      staticClass: "cell"
-	    }, [_vm._s(item.weightTime)])])])
+	    }, [_vm._s(item.state)])])])
 	  })])])])])
 	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
 	  return _h('div', {
@@ -13413,7 +13366,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["作业名"])]), " ", _h('th', {
+	  }, ["分区块"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -13421,7 +13374,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["到达时间"])]), " ", _h('th', {
+	  }, ["分区首地址"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -13429,7 +13382,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["服务时间"])]), " ", _h('th', {
+	  }, ["分区大小"])]), " ", _h('th', {
 	    staticClass: "is-leaf",
 	    attrs: {
 	      "colspan": "1",
@@ -13437,23 +13390,7 @@ webpackJsonp([0,1],[
 	    }
 	  }, [_h('div', {
 	    staticClass: "cell"
-	  }, ["完成时间"])]), " ", _h('th', {
-	    staticClass: "is-leaf",
-	    attrs: {
-	      "colspan": "1",
-	      "rowspan": "1"
-	    }
-	  }, [_h('div', {
-	    staticClass: "cell"
-	  }, ["周转时间"])]), " ", _h('th', {
-	    staticClass: "is-leaf",
-	    attrs: {
-	      "colspan": "1",
-	      "rowspan": "1"
-	    }
-	  }, [_h('div', {
-	    staticClass: "cell"
-	  }, ["带权周转时间"])]), " ", _h('th', {
+	  }, ["分配状态"])]), " ", _h('th', {
 	    staticClass: "gutter",
 	    staticStyle: {
 	      "width": "0px"
@@ -13465,6 +13402,119 @@ webpackJsonp([0,1],[
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-e696bdd6", module.exports)
+	  }
+	}
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._c;
+	  return _h('div', {
+	    attrs: {
+	      "id": "wrapper"
+	    }
+	  }, [_h('div', {
+	    staticClass: "content"
+	  }, [_h('LogTable', {
+	    attrs: {
+	      "processArray": _vm.dataReady_Array
+	    }
+	  }), " ", _h('MemoryTable', {
+	    attrs: {
+	      "areaArray": _vm.areaFree_Array
+	    }
+	  }), " ", _h('h3', ["\n\t\t\t\t[进程控制台]\n\t\t\t\t", _h('button', {
+	    staticClass: "el-button el-button--warning",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.reset
+	    }
+	  }, [_h('span', ["重置"])])]), " ", _h('InputArea', {
+	    on: {
+	      "join": _vm.joinProcess
+	    }
+	  }), " ", " ", _h('div', [_h('h4', ["选择算法:"]), " ", _h('div', {
+	    staticClass: "algorithm"
+	  }, [_h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "1",
+	      "id": "first",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "first"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "first"
+	    }
+	  }, ["首次适应算法"])])]), " ", _h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "2",
+	      "id": "best",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "best"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "best"
+	    }
+	  }, ["最佳适应算法"])])]), " ", _h('div', [_h('div', {
+	    staticClass: "checkbox-three"
+	  }, [_h('input', {
+	    attrs: {
+	      "type": "radio",
+	      "value": "3",
+	      "id": "whileFirst",
+	      "name": "algorithm"
+	    },
+	    on: {
+	      "change": _vm.ChoosetheAlgorithm
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "whileFirst"
+	    }
+	  }), " ", _h('label', {
+	    attrs: {
+	      "for": "whileFirst"
+	    }
+	  }, ["循环首次适应算法"])])])])]), " ", _h('div', {
+	    staticClass: "do-wrapper"
+	  }, [_h('button', {
+	    staticClass: "el-button el-button--success",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": _vm.executeAlgorithm
+	    }
+	  }, [_h('span', ["执行算法"])])])]), " "])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-1e259c4f", module.exports)
 	  }
 	}
 

@@ -119,7 +119,8 @@
                             <div class="cell">状态</div>
                         </th>
                         <th class="gutter" style="width: 0px;"></th> -->
-                        <th colspan="1" rowspan="1" class="is-leaf">
+                        <!--============================================-->
+                        <!-- <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">作业名</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
@@ -136,6 +137,22 @@
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">带权周转时间</div>
+                        </th> -->
+                        <!--============================================-->
+                         <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">作业名</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">需要容量</div>
+                        </th>
+                        <!-- <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">需要使用时间</div>
+                        </th> -->
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">分配首地址</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">作业状态</div>
                         </th>
                         <th class="gutter" style="width: 0px;"></th>
                     </tr>
@@ -151,20 +168,17 @@
                             <div class="cell">{{ item.name }}</div>
                         </td>
                         <td>
-                            <div class="cell">{{ item.arriveTime }}</div>
+                            <div class="cell">{{ item.size }}</div>
                         </td>
-                        <td>
+                       <!--  <td>
                             <div class="cell">{{ item.serveTime }}</div>
-                        </td>
-                        <td>
-                            <div class="cell">{{ item.completeTime }}</div>
-                        </td>
+                        </td> -->
                          <td>
-                            <div class="cell">{{ item.arroundTime }}</div>
+                            <div class="cell">{{ item.addr }}</div>
                         </td>
                         <td>
                             <!-- 运行中,等待中,运行完毕 -->
-                            <div class="cell">{{ item.weightTime }}</div>
+                            <div class="cell">{{ item.state }}</div>
                         </td>
                     </tr>
                 </tbody>

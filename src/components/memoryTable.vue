@@ -86,8 +86,12 @@
     .el-table__body-wrapper {
         position: relative;
         width: 100%;
-        height: 300px;
+        /*height: 300px;*/
+        height: 240px;
         overflow: auto;
+    }
+    .areaBody {
+        height: 240px;
     }
 </style>
 
@@ -102,7 +106,7 @@
             <table cellspacing="0" cellpadding="0" border="0" class="el-table__header">
                 <thead>
                     <tr>
-                        
+                        <!--=============================================-->
                         <!-- <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">进程名</div>
                         </th>
@@ -119,7 +123,8 @@
                             <div class="cell">状态</div>
                         </th>
                         <th class="gutter" style="width: 0px;"></th> -->
-                        <th colspan="1" rowspan="1" class="is-leaf">
+                        <!--=============================================-->
+                       <!--  <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">作业名</div>
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
@@ -136,35 +141,42 @@
                         </th>
                         <th colspan="1" rowspan="1" class="is-leaf">
                             <div class="cell">带权周转时间</div>
+                        </th> -->
+                        <!--=============================================-->
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">分区块</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">分区首地址</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">分区大小</div>
+                        </th>
+                        <th colspan="1" rowspan="1" class="is-leaf">
+                            <div class="cell">分配状态</div>
                         </th>
                         <th class="gutter" style="width: 0px;"></th>
                     </tr>
                 </thead>
             </table>
         </div>
-        <div class="el-table__body-wrapper">
+        <div class="el-table__body-wrapper areaBody">
             <table cellspacing="0" cellpadding="0" border="0" class="el-table__body">
                 <tbody>
-                    <tr v-for="item in processArray">
+                    <tr v-for="item in areaArray">
                         
                         <td>
                             <div class="cell">{{ item.name }}</div>
                         </td>
                         <td>
-                            <div class="cell">{{ item.arriveTime }}</div>
+                            <div class="cell">{{ item.addr }}</div>
                         </td>
                         <td>
-                            <div class="cell">{{ item.serveTime }}</div>
-                        </td>
-                        <td>
-                            <div class="cell">{{ item.completeTime }}</div>
-                        </td>
-                         <td>
-                            <div class="cell">{{ item.arroundTime }}</div>
+                            <div class="cell">{{ item.size }}</div>
                         </td>
                         <td>
                             <!-- 运行中,等待中,运行完毕 -->
-                            <div class="cell">{{ item.weightTime }}</div>
+                            <div class="cell">{{ item.state }}</div>
                         </td>
                     </tr>
                 </tbody>
@@ -176,7 +188,7 @@
 
 <script>
 	export default {
-		props: ['processArray'],
+		props: ['areaArray'],
 		mounted() {
 
 		},

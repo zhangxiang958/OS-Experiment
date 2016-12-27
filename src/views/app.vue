@@ -133,9 +133,11 @@
 	<div id="wrapper">
 		<div class="content">
 			<LogTable 
-				:processArray="dataStruct_Array"
+				:processArray="dataReady_Array"
 			/>
-			<MemoryTable />
+			<MemoryTable 
+				:areaArray="areaFree_Array"
+			/>
 			<h3>
 				[进程控制台]
 				<button type="button" class="el-button el-button--warning" @click="reset">
@@ -159,23 +161,23 @@
 				<div class="algorithm">
 				    <div>
 				    	<div class="checkbox-three">
-							<input type="radio" value="1" id="FCFS" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
-							<label for="FCFS"></label>
-							<label for="FCFS">先来先服务调度算法</label>
+							<input type="radio" value="1" id="first" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
+							<label for="first"></label>
+							<label for="first">首次适应算法</label>
 						</div>
 				    </div>
 					<div>
 						<div class="checkbox-three">
-							<input type="radio" value="2" id="SJF" name="algorithm"v-on:change="ChoosetheAlgorithm" />
-							<label for="SJF"></label>
-							<label for="SJF">SJF调度算法</label>
+							<input type="radio" value="2" id="best" name="algorithm"v-on:change="ChoosetheAlgorithm" />
+							<label for="best"></label>
+							<label for="best">最佳适应算法</label>
 						</div>
 					</div>
 					<div>
 						<div class="checkbox-three">
-							<input type="radio" value="3" id="VariableTime" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
-							<label for="VariableTime"></label>
-							<label for="VariableTime">响应比高优先HRN调度算法</label>
+							<input type="radio" value="3" id="whileFirst" name="algorithm" v-on:change="ChoosetheAlgorithm"/>
+							<label for="whileFirst"></label>
+							<label for="whileFirst">循环首次适应算法</label>
 						</div>
 					</div>
 					
@@ -212,6 +214,7 @@
 			// console.log("mounted");
 			// console.log(this.$el);
 			this.initializeArea();
+
 		},
 		data() {
 			return {
@@ -230,10 +233,35 @@
 					addr: 0,			//首地址
 					state: ''			//状态
 				},
-				dataReady_Array: [],
+				dataReady_Array: [{
+					name: 'job1',
+					serveTime: 8,
+					size: 6,
+					addr: 0,
+					state: '未分配'
+				},{
+					name: 'job2',
+					serveTime: 5,
+					size: 100,
+					addr: 0,
+					state: '未分配'
+				},{
+					name: 'job3',
+					serveTime: 12,
+					size: 40,
+					addr: 0,
+					state: '未分配'
+				},{
+					name: 'job4',
+					serveTime: 10,
+					size: 70,
+					addr: 0,
+					state: '未分配'
+				}],
 				dataAs_Array: [],
 				areaFree_Array: [],
 				areaAs_Array: [],
+				area_Array: [],
 				algorithmType: 0
 			}
 		},
@@ -244,38 +272,74 @@
 		},
 		methods: {
 			reset() {
-				this.dataStruct_Array = [];
+				
+				for(var i = 0; i < this.dataReady_Array.length; i ++) {
+					var addr = this.dataReady_Array[i].addr;
+
+					for(var j = 0; j < this.area_Array.length; j++) {
+						if(addr == this.area_Array[j].addr) {
+							if(j == 0) {
+								for(var k = 0; k < this.areaFree_Array.length; k++) {
+									if(this.areaFree_Array[k] == this.area_Array[1]) {
+										alert("回收两块(No.0,1)空间");
+										var zoom = this.area_Array[0].size + this.area_Array[1].size;
+										alert("大小为" + zoom);
+									} else {
+										alert("回收1块(No.0)空间");
+										var zoom = this.area_Array[0].size;
+										alert("大小为" + zoom);
+									}
+								}
+
+							} else if(j == this.area_Array.length -1) {
+
+								for(var k = 0; k < this.areaFree_Array.length; k++) {
+									if(this.areaFree_Array[k] == this.area_Array[j - 1]) {
+										alert("回收两块(Nolast.0,1)空间");
+										var zoom = this.area_Array[j].size + this.area_Array[j - 1].size;
+										alert("大小为" + zoom);
+									} else {
+										alert("回收1块(Nolast.0)空间");
+										var zoom = this.area_Array[j].size;
+										alert("大小为" + zoom);
+									}
+								}
+
+							} else {
+
+								for(var k = 0; k < this.areaFree_Array.length; k++) {
+									var zoom = 0;
+
+									if(this.areaFree_Array[k] == this.area_Array[j - 1]) {
+										// alert("回收两块(Nolast.0,1)空间");
+										zoom += this.area_Array[j - 1].size;
+										
+									} else if(this.areaFree_Array[k] == this.area_Array[j + 1]) {
+										zoom += this.area_Array[j + 1].size;
+										
+									} else {
+										alert("回收1块空间");
+										zoom += this.area_Array[j].size;
+										
+									}
+									
+								}
+								alert("回收空间完成");
+								alert("大小为" + zoom);
+							}
+						}
+					}
+				}
+				this.areaFree_Array = this.area_Array;
 			},
 			ChoosetheAlgorithm(event) {
 				// console.log(event.currentTarget);
 				console.log(event.target.value);
 				this.algorithmType = event.target.value;
 			},
-			// submitTime() {
-			// 	if(this.time === 0) {
-			// 		alert("请输入时间片");
-			// 	} else {
-			// 		alert("时间片已确定");
-			// 	}
-			// },
 			joinProcess(processData) {
 				console.log(processData);
-				this.dataStruct_Array.push(processData);
-			},
-			initializeArea() {
-				var areaA = this.createArea('a', 10, 5);
-				this.dataReady_Array.push(areaA);
-				var areaB = this.createArea('b', 120, 10);
-				this.dataReady_Array.push(areaB);
-				var areaC = this.createArea('c', 40, 160);
-				this.dataReady_Array.push(areaC);
-				var areaD = this.createArea('d', 10, 220);
-				this.dataReady_Array.push(areaD);
-				var areaE = this.createArea('e', 20, 250);
-				this.dataReady_Array.push(areaE);
-				var areaF = this.createArea('f', 80, 330);
-				this.dataReady_Array.push(areaF);
-				console.log(this.dataReady_Array);
+				this.dataReady_Array.push(processData);
 			},
 			createArea(name, size, addr) {
 				
@@ -288,128 +352,163 @@
 
 				return area;
 			},
+			initializeArea() {
+				var areaA = this.createArea('a', 10, 5);
+				this.area_Array.push(areaA);
+				this.areaFree_Array.push(areaA);				
+				var areaB = this.createArea('b', 120, 10);
+				this.area_Array.push(areaB);
+				this.areaFree_Array.push(areaB);
+				var areaC = this.createArea('c', 40, 160);
+				this.area_Array.push(areaC);
+				this.areaFree_Array.push(areaC);
+				var areaD = this.createArea('d', 10, 220);
+				this.area_Array.push(areaD);
+				this.areaFree_Array.push(areaD);
+				var areaE = this.createArea('e', 20, 250);
+				this.area_Array.push(areaE);
+				this.areaFree_Array.push(areaE);
+				var areaF = this.createArea('f', 80, 330);
+				this.area_Array.push(areaF);
+				this.areaFree_Array.push(areaF);
+
+				console.log(this.area_Array);
+				// this.areaFree_Array = this.area_Array;
+			},
 			executeAlgorithm() {
 
 				switch(this.algorithmType){
 					case "1": 
-						this.FCFS();
+						this.FIRST();
 						break;
 					case "2": 
-						this.SJF();
+						this.BEST();
 						break;
 					case "3":
-						this.HRN();
+						this.WHILEFIRST();
 						break;
 					default: 
 						alert("请先选择算法");				
 				} 
 			},
-			FCFS() {
-				alert("执行FSFC算法");
+			FIRST() {
+				alert("执行首次适应算法");
 
-				if(!this.dataStruct_Array.length) {
-
+				if(!this.dataReady_Array.length) {
 					alert("就绪队列为空");
 					return;
 				} else {
-
-					this.dataStruct_Array.sort(this.compare('arriveTime'));
-					console.log(this.dataStruct_Array);
-
-					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+					console.log(this.dataReady_Array);
+					this.dataReady_Array.sort(this.compare());
+					alert("作业排序完成!");
+					for(var index = 0; index < this.dataReady_Array.length; index ++) {
 						// alert(index);
-						index = this.Core(this.time * 1000, index);
+						this.Core(1 * 1000, index);
 					}
 
 				}
 			},
-			SJF() {
-				alert("执行SJF算法");
+			BEST() {
+				alert("执行最佳适应算法");
 
-				if(!this.dataStruct_Array.length) {
-
+				if(!this.dataReady_Array.length) {
 					alert("就绪队列为空");
 					return;
 				} else {
-
-					this.dataStruct_Array.sort(this.compare('arriveTime'));
-					console.log(this.dataStruct_Array);
-					alert("就绪队列排列完成");
-					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+					console.log(this.dataReady_Array);
+					this.dataReady_Array.sort(this.compare());
+					alert("作业排序完成!");
+					for(var index = 0; index < this.dataReady_Array.length; index ++) {
 						// alert(index);
-						index = this.Core(this.time * 1000, index);
+						this.Core(1 * 1000, index);
 					}
 
 				}
+				console.log(this.area_Array);
 			},
-			HRN() {
-				alert("执行HRN算法");
-				var temp = [];
-				var now = 0;
+			WHILEFIRST() {
+				alert("执行循环首次适应算法");
 
-				if(!this.dataStruct_Array.length) {
-
+				if(!this.dataReady_Array.length) {
 					alert("就绪队列为空");
 					return;
 				} else {
-					this.dataStruct_Array.sort(this.compare('arriveTime'));
-					console.log(this.dataStruct_Array)
-					alert("就绪队列排列完成");
-
-					for(var index = 0; index < this.dataStruct_Array.length; index ++) {
+					console.log(this.dataReady_Array);
+					this.dataReady_Array.sort(this.compare());
+					alert("作业排序完成!");
+					for(var index = 0; index < this.dataReady_Array.length; index ++) {
 						// alert(index);
-						// if(this.dataStruct_Array[index].completeTime == 9999) {
-						// 	continue;
-						// } else {
-
-						// }
-							index = this.Core(this.time * 1000, index);
-						// console.log(now);
-						// if(this.dataStruct_Array[index].completeTime) {
-						// 	temp.push(this.dataStruct_Array[index]);
-						// 	now += complete;
-						// 	console.log(now);
-						// 	// for(var k = 0; k < this.dataStruct_Array.length; i ++) {
-						// 	// 	this.dataStruct_Array[index].right = this.computerRight(now, this.dataStruct_Array[index].arriveTime, this.dataStruct_Array[index].serveTime);
-						// 	// }
-						// 	// this.dataStruct_Array.splice(index, 1);
-						// }
+						this.worstCore(1 * 1000, index);
 					}
 
-				}
+				}				
 			},
 			Core(n, i) {
 				var  start = new Date().getTime();   
 
 			    // this.dataStruct_Array[i].state = '运行中';
 
+			    console.log(this.dataReady_Array);
+
 			    while(true) {
 			    	if(new Date().getTime() - start > n) {
 
-						this.dataStruct_Array[i].rTime += this.time;
-						
-						console.log(this.dataStruct_Array[i]);
-						
-						if(this.dataStruct_Array[i].rTime == this.dataStruct_Array[i].serveTime){
-							//break
-							var complete = 0;
-							for(var j = 0; j <= i; j++) {
+						// this.dataReady_Array[i].rTime += this.time;
+			    		// $($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataReady_Array[i].rTime.toString());
 
-								complete += this.dataStruct_Array[j].serveTime;
+						console.log(this.dataReady_Array[i]);
+						
+						for(var j = 0; j < this.areaFree_Array.length; j++) {
+							if(this.areaFree_Array[j].size >= this.dataReady_Array[i].size) {
+								
+								this.dataReady_Array[i].state = '已分配';
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html('已分配');
+
+								this.dataReady_Array[i].addr = this.areaFree_Array[j].addr;
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[2]).html(this.areaFree_Array[j].addr);
+
+								// this.area_Array[j].state = '已分配';
+								this.areaAs_Array.push(this.areaFree_Array[j]);
+								this.areaFree_Array.splice(j, 1);
+								alert("分配完成");
+								break;
 							}
-
-							this.dataStruct_Array[i].completeTime = complete;
-							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(complete);
-							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[4]).html(this.dataStruct_Array[i].completeTime - this.dataStruct_Array[i].arriveTime);
-							$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[5]).html((this.dataStruct_Array[i].completeTime - this.dataStruct_Array[i].arriveTime) / this.dataStruct_Array[i].serveTime);
-							// this.dataStruct_Array.splice(i, 1);
-							// i ++;
-							
-							alert("作业" + this.dataStruct_Array[i].name +"调度完毕");
-						} else {
-							i --;
 						}
-			    		return i;	
+
+						// alert("没有合适的分区");
+						break;	
+			    	} 
+			    }
+			},
+			worstCore(n, i) {
+				var  start = new Date().getTime();   
+
+			    // this.dataStruct_Array[i].state = '运行中';
+
+			    console.log(this.dataReady_Array);
+			    var temp = [];
+
+			    while(true) {
+			    	if(new Date().getTime() - start > n) {
+
+						// this.dataReady_Array[i].rTime += this.time;
+			    		// $($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html(this.dataReady_Array[i].rTime.toString());
+
+						console.log(this.dataReady_Array[i]);
+						
+						for(var j = i; j < this.areaFree_Array.length; j++) {
+							if(this.areaFree_Array[j].size >= this.dataReady_Array[i].size) {
+								this.dataReady_Array[i].state = '已分配';
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[3]).html('已分配');
+								this.dataReady_Array[i].addr = this.areaFree_Array[j].addr;
+								$($($(".el-table__body-wrapper table tbody tr")[i]).find('td')[2]).html(this.areaFree_Array[j].addr);
+								alert("分配完成");
+								break;
+							}
+						}
+
+						alert("没有合适的分区");
+						break;	
 			    	} 
 			    }
 			},
@@ -417,37 +516,8 @@
 				return function(a, b){
 					var value1 = a[prop];
 					var value2 = b[prop];
-					if(value1 == value2) {
-						return a['serveTime'] - b['serveTime'];
-					} else {
-						return value1 - value2;
-					}
+					return value1 - value2;
 				}
-			},
-			compareHRN(prop, wait) {
-				return function(a, b) {
-					var value1 = a[prop];
-					var value2 = b[prop];
-					return (1 + (wait/value1)) - (1 + (wait/value2));
-				}
-			},
-			computerRight(now) {
-				var index = 0; 
-				var temp = this.dataStruct_Array[0];
-				for(var i = 0; i < this.dataStruct_Array.length; i++){
-					this.dataStruct_Array[i].right = (now - this.dataStruct_Array[i].arriveTime) + this.dataStruct_Array[i].serveTime;
-					if(this.dataStruct_Array[i].completeTime) {
-						this.dataStruct_Array[i].right = 9999;
-					}
-				}
-				for(var i = 0; i < this.dataStruct_Array.length; i++){
-					
-					if(temp.right > this.dataStruct_Array[i].right) {
-						temp = this.dataStruct_Array[i];
-						index = i;
-					}
-				}
-				return i;
 			}
 		},
 		components: {
